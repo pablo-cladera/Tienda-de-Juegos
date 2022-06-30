@@ -9,12 +9,12 @@ namespace GameStore.Models
     {
         public Consola()
         {
-            Juegos = new HashSet<Juegos>();
+            Juegos = new HashSet<Juego>();
         }
 
         public decimal Id { get; set; }
         public string Nombre { get; set; }
 
-        public virtual ICollection<Juegos> Juegos { get; set; }
+        public virtual ICollection<Juego> Juegos { get; set; }
     }
 }

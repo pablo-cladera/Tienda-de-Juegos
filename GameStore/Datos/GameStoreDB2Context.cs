@@ -25,7 +25,7 @@ namespace GameStore.Models
         public virtual DbSet<DetalleDeVenta> DetalleDeVenta { get; set; }
         public virtual DbSet<Direccion> Direccion { get; set; }
         public virtual DbSet<Genero> Genero { get; set; }
-        public virtual DbSet<Juegos> Juegos { get; set; }
+        public virtual DbSet<Juego> Juegos { get; set; }
         public virtual DbSet<Persona> Persona { get; set; }
         public virtual DbSet<Proveedor> Proveedor { get; set; }
         public virtual DbSet<Sucursal> Sucursal { get; set; }
@@ -144,7 +144,7 @@ namespace GameStore.Models
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<Juegos>(entity =>
+            modelBuilder.Entity<Juego>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnType("numeric(18, 0)");
 
