@@ -1,0 +1,87 @@
+﻿{
+   "CodeGenerationMode": 2,
+   "ContextClassName": "GameStoreDB2Context",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": "Datos",
+   "OutputPath": "Models",
+   "ProjectRootNamespace": "GameStore",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[dbo].[Cliente]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Compra]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Consola]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[DetalleDeCompra]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[DetalleDeVenta]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Direccion]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Genero]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Juego]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Marca]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Persona]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Proveedor]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Sucursal]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Venta]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "DESKTOP-5VDSJQJ\\SQLEXPRESS.GameStoreDB2",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoConstructor": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false
+}
