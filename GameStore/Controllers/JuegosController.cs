@@ -36,7 +36,7 @@ namespace GameStore.Controllers
             return juegoDTO;
         }
 
-        [HttpGet("{juegoId}")]
+        [HttpGet("{Id}")]
         public ActionResult<JuegoLiteDTO> GetOne(decimal Id)
         {
             var juego = _juegoService.GetOne(Id);
@@ -49,7 +49,9 @@ namespace GameStore.Controllers
             return Ok(juegoDTO);
         }
 
-        [HttpDelete("{juegoId}")]
+
+
+        [HttpDelete("{Id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
 

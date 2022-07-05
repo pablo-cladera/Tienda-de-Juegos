@@ -7,7 +7,7 @@ namespace GameStore.Services.Interfaces
     {
         IEnumerable<Juego> GetAll();
 
-        Juego GetOne(decimal juegoId);
+        Juego GetOne(decimal Id);
 
         void DeleteJuego(Juego juego);
 

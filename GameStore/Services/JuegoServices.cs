@@ -17,12 +17,12 @@ namespace GameStore.Services
         
         public IEnumerable<Juego> GetAll()
         {
-            return _context.Juego.Include(c => c.Id).ToList();
+            return _context.Juego.ToList();
         }
 
-        public Juego GetOne(decimal juegoId)
+        public Juego GetOne(decimal Id)
         {
-            return _context.Juego.Include(c => c.Id).SingleOrDefault(x => x.Id == juegoId);
+            return _context.Juego.Include(c => c.IdGeneroNavigation).SingleOrDefault(x => x.Id == Id);
         }
 
         public void DeleteJuego(Juego juego)

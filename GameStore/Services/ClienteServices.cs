@@ -23,7 +23,7 @@ namespace GameStore.Services
 
         public IEnumerable<Cliente> GetAll()
         {
-            return _context.Cliente.Include(c => c.Id).ToList();
+            return _context.Cliente.ToList();
         }
 
         public Cliente GetOne(decimal clienteId)
