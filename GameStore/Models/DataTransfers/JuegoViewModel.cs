@@ -3,8 +3,8 @@
     public class JuegoViewModel
     {
         public string? Nombre { get; set; }
-        public decimal IdGenero { get; set; }
-        public decimal IdConsola { get; set; }
+        public string? Genero { get; set; }
+        public string? Consola { get; set; }
         public int Stock { get; set; }
     }
 }

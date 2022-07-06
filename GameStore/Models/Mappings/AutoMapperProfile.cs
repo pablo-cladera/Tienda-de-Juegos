@@ -13,8 +13,8 @@ namespace GameStore.Models.Mappings
         {
             CreateMap<Juego, JuegoViewModel>()
                 .ForMember(x => x.Nombre, opt => opt.MapFrom(o => o.Nombre))
-                .ForMember(x => x.IdConsola, opt => opt.MapFrom(o => o.IdConsolaNavigation.Nombre))
-                .ForMember(x => x.IdGenero, opt => opt.MapFrom(o => o.IdGeneroNavigation.Nombre))
+                .ForMember(x => x.Genero, opt => opt.MapFrom(o => o.IdGeneroNavigation.Nombre))
+                .ForMember(x => x.Consola, opt => opt.MapFrom(o => o.IdConsolaNavigation.Nombre))
                 .ForMember(x => x.Stock, opt => opt.MapFrom(o => o.Stock));
 
             CreateMap<Juego, JuegoLiteDTO>()
