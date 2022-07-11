@@ -2,6 +2,7 @@ using GameStore.Datos;
 using GameStore.Services;
 using GameStore.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Cors;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,8 @@ builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddControllers();
 
+
+
 builder.Services.AddDbContext<GameStoreDB2Context>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("WebApiDatabase"));
@@ -19,10 +22,25 @@ builder.Services.AddDbContext<GameStoreDB2Context>(options =>
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new() { Title = "WebStore", Version = "v1" });
+
+    
 });
+
+
+//private readonly string _MyCors = "MyCors";
 
 builder.Services.AddTransient<IClienteServices, ClienteServices>();
 builder.Services.AddTransient<IJuegoServices, JuegoServices>();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("corsPolicy", builder =>
+    {
+        //builder.WithOrigins("http://http://localhost:4200");
+        builder.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost")
+        .AllowAnyHeader().AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
@@ -38,7 +56,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
-app.UseCors("MyAllowSpecificOrigins");
+app.UseCors("corsPolicy");
+//app.UseCors("MyAllowSpecificOrigins");
 
 app.UseAuthorization();
 
