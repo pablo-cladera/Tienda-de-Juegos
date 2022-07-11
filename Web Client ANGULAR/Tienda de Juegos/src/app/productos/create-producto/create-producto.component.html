@@ -1,0 +1,144 @@
+<h2>Nuevo Producto:  </h2>
+<hr>
+<div class="row">
+    <div class="col">
+        <form autocomplete="off"
+              (ngSubmit)="guardar()"
+              [formGroup]="miForm">
+              
+              <!-- <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Codigo</label>
+                <div class="col-sm-9">
+                  <input type="text" 
+                         class="form-control" 
+                         placeholder="Ingresar Codigo"
+                         formControlName = "codigo" 
+                         >
+                         <span class="form-text text-danger"
+                          *ngIf="tieneerror('codigo')">
+                            Minimo 3 letras
+                        </span>
+                </div>
+            </div>               -->
+
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Nombre Juego</label>
+                <div class="col-sm-9">
+                  <input type="text" 
+                         class="form-control" 
+                         placeholder="Nombre del Juego"
+                         formControlName="nombre"
+                         >
+                         <span class="form-text text-danger"
+                               *ngIf="tieneerror('nombre')">
+                            Minimo 3 letras
+                        </span>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Genero</label>
+                <div class="col-sm-9">
+                    <select name="dropdown" 
+                         class="form-control"
+                         formControlName="Genero">
+                        <option value="0" selected></option>
+                        <option value="1">Deporte</option>
+                        <option value="2">Aventura</option>
+                        <option value="3">Shooter</option>
+                    </select>                         
+                    <span class="form-text text-danger"
+                          *ngIf="tieneerror('Genero')">
+                        Seleccionar Genero del juego
+                    </span>
+                </div>
+            </div>
+            
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Consola</label>
+                <div class="col-sm-9">
+                    <select name="dropdown" 
+                         class="form-control"
+                         formControlName="Consola">
+                        <option value="0" selected></option>
+                        <option value="1">PS5</option>
+                        <option value="2">PS4</option>
+                        <option value="3">PS3</option>
+                    </select>                         
+                    <span class="form-text text-danger"
+                          *ngIf="tieneerror('Consola')">
+                        Seleccionar Consola
+                    </span>
+                </div>
+            </div> 
+
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Stock</label>
+                <div class="col-sm-9">
+                  <input type="number" 
+                         class="form-control" 
+                         placeholder="Ingresar Stock Actual"
+                         formControlName="stock">
+                         <span class="form-text text-danger"
+                               *ngIf="tieneerror('stock')">
+                            Stock Actual mayor o igual que cero
+                         </span>                         
+                </div>
+            </div>            
+
+            <!-- <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Stock Minimo</label>
+                <div class="col-sm-9">
+                  <input type="number" 
+                         class="form-control" 
+                         placeholder="Ingresar Stock Minimo"
+                         formControlName="stockmin">
+                         <span class="form-text text-danger"
+                               *ngIf="tieneerror('stockmin')">
+                            Stock Minimo mayor o igual que cero
+                        </span>                         
+                </div>
+            </div>  
+
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Stock Maximo</label>
+                <div class="col-sm-9">
+                  <input type="number" 
+                         class="form-control" 
+                         placeholder="Ingresar Stock Maximo"
+                         formControlName="stockmax">
+                         <span class="form-text text-danger"
+                               *ngIf="tieneerror('stockmax')">
+                            Stock Maximo mayor o igual que cero
+                        </span>                         
+                </div>
+            </div>              -->
+           
+            <div class="row">
+                <div class="col">
+                    <button type="submit"
+                            class="btn btn-primary float-end">
+                        Guardar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <span>Valid</span>
+    <pre>{{miForm.valid}}</pre>
+
+    <span>Value</span>
+    <pre>{{miForm.value | json}}</pre>
+
+    <span>Pristine</span>
+    <pre>{{miForm.pristine}}</pre>        
+    <span>Touched</span>
+    <pre>{{miForm.touched}}</pre>       
+
+    <span>Custom</span>
+    <pre>{{miForm.controls.stock?.errors| json}}</pre>        
+
+</div>               
