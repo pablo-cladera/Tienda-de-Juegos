@@ -7,14 +7,18 @@
    "IncludeConnectionString": false,
    "ModelNamespace": null,
    "OutputContextPath": "Datos",
-   "OutputPath": "Models",
+   "OutputPath": "Models\/Entities",
    "ProjectRootNamespace": "GameStore",
    "Schemas": null,
    "SelectedHandlebarsLanguage": 0,
    "SelectedToBeGenerated": 0,
    "Tables": [
       {
-         "Name": "[dbo].[Cliente]",
+         "Name": "[dbo].[Ciudad]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Clasificacion]",
          "ObjectType": 0
       },
       {
@@ -26,15 +30,15 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[Desarroladores]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[DetalleDeCompra]",
          "ObjectType": 0
       },
       {
          "Name": "[dbo].[DetalleDeVenta]",
-         "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[Direccion]",
          "ObjectType": 0
       },
       {
@@ -54,11 +58,23 @@
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[Proveedor]",
+         "Name": "[dbo].[Provincia]",
          "ObjectType": 0
       },
       {
          "Name": "[dbo].[Sucursal]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TipoDocumento]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TipoPersona]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TipoTelefono]",
          "ObjectType": 0
       },
       {
