@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace GameStore.Models
+namespace GameStore.Models.Entities
 {
     public partial class Compra
     {
@@ -13,11 +13,14 @@ namespace GameStore.Models
         }
 
         public decimal Id { get; set; }
-        public decimal IdProveedor { get; set; }
+        public decimal IdPersona { get; set; }
+        public decimal IdSucursal { get; set; }
+        public string FacturaNumero { get; set; }
         public DateTime Fecha { get; set; }
         public decimal? Total { get; set; }
 
-        public virtual Proveedor IdProveedorNavigation { get; set; }
+        public virtual Persona IdPersonaNavigation { get; set; }
+        public virtual Sucursal IdSucursalNavigation { get; set; }
         public virtual ICollection<DetalleDeCompra> DetalleDeCompra { get; set; }
     }
 }

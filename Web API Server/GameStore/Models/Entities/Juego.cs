@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace GameStore.Models
+namespace GameStore.Models.Entities
 {
     public partial class Juego
     {
@@ -17,9 +17,17 @@ namespace GameStore.Models
         public string Nombre { get; set; }
         public decimal IdGenero { get; set; }
         public decimal IdConsola { get; set; }
+        public decimal IdDesarroladores { get; set; }
+        public decimal IdClasificacion { get; set; }
+        public string AñoLanzamiento { get; set; }
+        public decimal Precio { get; set; }
         public int Stock { get; set; }
+        public int StockMin { get; set; }
+        public int StockMax { get; set; }
 
+        public virtual Clasificacion IdClasificacionNavigation { get; set; }
         public virtual Consola IdConsolaNavigation { get; set; }
+        public virtual Desarroladores IdDesarroladoresNavigation { get; set; }
         public virtual Genero IdGeneroNavigation { get; set; }
         public virtual ICollection<DetalleDeCompra> DetalleDeCompra { get; set; }
         public virtual ICollection<DetalleDeVenta> DetalleDeVenta { get; set; }

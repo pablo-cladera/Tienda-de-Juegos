@@ -1,5 +1,6 @@
 ﻿using GameStore.Models;
 using GameStore.Models.DataTransfers;
+using GameStore.Models.Entities;
 
 namespace GameStore.Services.Interfaces
 {

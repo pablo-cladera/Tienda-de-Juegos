@@ -3,20 +3,19 @@
 using System;
 using System.Collections.Generic;
 
-namespace GameStore.Models
+namespace GameStore.Models.Entities
 {
     public partial class DetalleDeCompra
     {
         public decimal Id { get; set; }
         public decimal IdCompra { get; set; }
         public decimal IdJuego { get; set; }
-        public decimal? IdSucursal { get; set; }
         public decimal Precio { get; set; }
         public int Cantidad { get; set; }
         public decimal Total { get; set; }
+        public decimal? Descuento { get; set; }
 
         public virtual Compra IdCompraNavigation { get; set; }
         public virtual Juego IdJuegoNavigation { get; set; }
-        public virtual Sucursal IdSucursalNavigation { get; set; }
     }
 }

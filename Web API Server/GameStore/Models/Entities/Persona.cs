@@ -3,25 +3,35 @@
 using System;
 using System.Collections.Generic;
 
-namespace GameStore.Models
+namespace GameStore.Models.Entities
 {
     public partial class Persona
     {
         public Persona()
         {
-            Cliente = new HashSet<Cliente>();
-            Proveedor = new HashSet<Proveedor>();
+            Compra = new HashSet<Compra>();
+            Venta = new HashSet<Venta>();
         }
 
         public decimal Id { get; set; }
-        public decimal? IdDireccion { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
-        public string Dni { get; set; }
+        public decimal IdTipoPersona { get; set; }
+        public decimal IdTipoDocumento { get; set; }
+        public string Documento { get; set; }
+        public decimal IdTipoTelefono { get; set; }
         public string Telefono { get; set; }
+        public string Email { get; set; }
+        public string Calle { get; set; }
+        public string NumeroCalle { get; set; }
+        public decimal IdCiudad { get; set; }
+        public string CodigoPostal { get; set; }
 
-        public virtual Direccion IdDireccionNavigation { get; set; }
-        public virtual ICollection<Cliente> Cliente { get; set; }
-        public virtual ICollection<Proveedor> Proveedor { get; set; }
+        public virtual Ciudad IdCiudadNavigation { get; set; }
+        public virtual TipoDocumento IdTipoDocumentoNavigation { get; set; }
+        public virtual TipoPersona IdTipoPersonaNavigation { get; set; }
+        public virtual TipoTelefono IdTipoTelefonoNavigation { get; set; }
+        public virtual ICollection<Compra> Compra { get; set; }
+        public virtual ICollection<Venta> Venta { get; set; }
     }
 }

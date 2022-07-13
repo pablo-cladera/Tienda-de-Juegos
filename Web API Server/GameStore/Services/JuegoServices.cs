@@ -1,6 +1,7 @@
 ﻿using GameStore.Datos;
 using GameStore.Models;
 using GameStore.Models.DataTransfers;
+using GameStore.Models.Entities;
 using GameStore.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 

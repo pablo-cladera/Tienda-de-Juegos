@@ -5,18 +5,16 @@ using System.Collections.Generic;
 
 namespace GameStore.Models.Entities
 {
-    public partial class Consola
+    public partial class TipoPersona
     {
-        public Consola()
+        public TipoPersona()
         {
-            Juego = new HashSet<Juego>();
+            Persona = new HashSet<Persona>();
         }
 
         public decimal Id { get; set; }
-        public decimal IdMarca { get; set; }
         public string Nombre { get; set; }
 
-        public virtual Marca IdMarcaNavigation { get; set; }
-        public virtual ICollection<Juego> Juego { get; set; }
+        public virtual ICollection<Persona> Persona { get; set; }
     }
 }

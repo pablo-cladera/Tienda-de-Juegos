@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using GameStore.Models;
+using GameStore.Models.Entities;
 
 namespace GameStore.Datos
 {
@@ -19,52 +19,84 @@ namespace GameStore.Datos
         {
         }
 
-        public virtual DbSet<Cliente> Cliente { get; set; }
+        public virtual DbSet<Ciudad> Ciudad { get; set; }
+        public virtual DbSet<Clasificacion> Clasificacion { get; set; }
         public virtual DbSet<Compra> Compra { get; set; }
         public virtual DbSet<Consola> Consola { get; set; }
+        public virtual DbSet<Desarroladores> Desarroladores { get; set; }
         public virtual DbSet<DetalleDeCompra> DetalleDeCompra { get; set; }
         public virtual DbSet<DetalleDeVenta> DetalleDeVenta { get; set; }
-        public virtual DbSet<Direccion> Direccion { get; set; }
         public virtual DbSet<Genero> Genero { get; set; }
         public virtual DbSet<Juego> Juego { get; set; }
         public virtual DbSet<Marca> Marca { get; set; }
         public virtual DbSet<Persona> Persona { get; set; }
-        public virtual DbSet<Proveedor> Proveedor { get; set; }
+        public virtual DbSet<Provincia> Provincia { get; set; }
         public virtual DbSet<Sucursal> Sucursal { get; set; }
+        public virtual DbSet<TipoDocumento> TipoDocumento { get; set; }
+        public virtual DbSet<TipoPersona> TipoPersona { get; set; }
+        public virtual DbSet<TipoTelefono> TipoTelefono { get; set; }
         public virtual DbSet<Venta> Venta { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Cliente>(entity =>
+            modelBuilder.Entity<Ciudad>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnType("numeric(18, 0)");
 
-                entity.Property(e => e.IdPersona).HasColumnType("numeric(18, 0)");
+                entity.Property(e => e.IdProvincia).HasColumnType("numeric(18, 0)");
 
-                entity.HasOne(d => d.IdPersonaNavigation)
-                    .WithMany(p => p.Cliente)
-                    .HasForeignKey(d => d.IdPersona)
+                entity.Property(e => e.Nombre)
+                    .IsRequired()
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.IdProvinciaNavigation)
+                    .WithMany(p => p.Ciudad)
+                    .HasForeignKey(d => d.IdProvincia)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_PersonaCliente");
+                    .HasConstraintName("fk_Provincia");
+            });
+
+            modelBuilder.Entity<Clasificacion>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnType("numeric(18, 0)");
+
+                entity.Property(e => e.Nombre)
+                    .IsRequired()
+                    .HasMaxLength(40)
+                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<Compra>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnType("numeric(18, 0)");
 
+                entity.Property(e => e.FacturaNumero)
+                    .IsRequired()
+                    .HasMaxLength(15)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.Fecha)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getdate())");
 
-                entity.Property(e => e.IdProveedor).HasColumnType("numeric(18, 0)");
+                entity.Property(e => e.IdPersona).HasColumnType("numeric(18, 0)");
+
+                entity.Property(e => e.IdSucursal).HasColumnType("numeric(18, 0)");
 
                 entity.Property(e => e.Total).HasColumnType("decimal(18, 0)");
 
-                entity.HasOne(d => d.IdProveedorNavigation)
+                entity.HasOne(d => d.IdPersonaNavigation)
                     .WithMany(p => p.Compra)
-                    .HasForeignKey(d => d.IdProveedor)
+                    .HasForeignKey(d => d.IdPersona)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_Provedor");
+                    .HasConstraintName("fk_PersonaCompra");
+
+                entity.HasOne(d => d.IdSucursalNavigation)
+                    .WithMany(p => p.Compra)
+                    .HasForeignKey(d => d.IdSucursal)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_SucursalCompra");
             });
 
             modelBuilder.Entity<Consola>(entity =>
@@ -85,15 +117,25 @@ namespace GameStore.Datos
                     .HasConstraintName("fk_Marca");
             });
 
+            modelBuilder.Entity<Desarroladores>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnType("numeric(18, 0)");
+
+                entity.Property(e => e.Nombre)
+                    .IsRequired()
+                    .HasMaxLength(40)
+                    .IsUnicode(false);
+            });
+
             modelBuilder.Entity<DetalleDeCompra>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnType("numeric(18, 0)");
 
+                entity.Property(e => e.Descuento).HasColumnType("decimal(18, 0)");
+
                 entity.Property(e => e.IdCompra).HasColumnType("numeric(18, 0)");
 
                 entity.Property(e => e.IdJuego).HasColumnType("numeric(18, 0)");
-
-                entity.Property(e => e.IdSucursal).HasColumnType("numeric(18, 0)");
 
                 entity.Property(e => e.Precio).HasColumnType("decimal(18, 0)");
 
@@ -110,20 +152,15 @@ namespace GameStore.Datos
                     .HasForeignKey(d => d.IdJuego)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_JuegoCompra");
-
-                entity.HasOne(d => d.IdSucursalNavigation)
-                    .WithMany(p => p.DetalleDeCompra)
-                    .HasForeignKey(d => d.IdSucursal)
-                    .HasConstraintName("fk_SucursalCompra");
             });
 
             modelBuilder.Entity<DetalleDeVenta>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnType("numeric(18, 0)");
 
-                entity.Property(e => e.IdJuego).HasColumnType("numeric(18, 0)");
+                entity.Property(e => e.Descuento).HasColumnType("decimal(18, 0)");
 
-                entity.Property(e => e.IdSucursal).HasColumnType("numeric(18, 0)");
+                entity.Property(e => e.IdJuego).HasColumnType("numeric(18, 0)");
 
                 entity.Property(e => e.IdVenta).HasColumnType("numeric(18, 0)");
 
@@ -135,36 +172,11 @@ namespace GameStore.Datos
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_JuegoVenta");
 
-                entity.HasOne(d => d.IdSucursalNavigation)
-                    .WithMany(p => p.DetalleDeVenta)
-                    .HasForeignKey(d => d.IdSucursal)
-                    .HasConstraintName("fk_SucursalVenta");
-
                 entity.HasOne(d => d.IdVentaNavigation)
                     .WithMany(p => p.DetalleDeVenta)
                     .HasForeignKey(d => d.IdVenta)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_Venta");
-            });
-
-            modelBuilder.Entity<Direccion>(entity =>
-            {
-                entity.Property(e => e.Id).HasColumnType("numeric(18, 0)");
-
-                entity.Property(e => e.Calle)
-                    .IsRequired()
-                    .HasMaxLength(40)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Ciudad)
-                    .IsRequired()
-                    .HasMaxLength(40)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.CodigoPostal)
-                    .IsRequired()
-                    .HasMaxLength(10)
-                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<Genero>(entity =>
@@ -181,19 +193,42 @@ namespace GameStore.Datos
             {
                 entity.Property(e => e.Id).HasColumnType("numeric(18, 0)");
 
+                entity.Property(e => e.AñoLanzamiento)
+                    .HasMaxLength(4)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.IdClasificacion).HasColumnType("numeric(18, 0)");
+
                 entity.Property(e => e.IdConsola).HasColumnType("numeric(18, 0)");
+
+                entity.Property(e => e.IdDesarroladores).HasColumnType("numeric(18, 0)");
 
                 entity.Property(e => e.IdGenero).HasColumnType("numeric(18, 0)");
 
                 entity.Property(e => e.Nombre)
+                    .IsRequired()
                     .HasMaxLength(20)
                     .IsUnicode(false);
+
+                entity.Property(e => e.Precio).HasColumnType("decimal(18, 0)");
+
+                entity.HasOne(d => d.IdClasificacionNavigation)
+                    .WithMany(p => p.Juego)
+                    .HasForeignKey(d => d.IdClasificacion)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_Clasificacion");
 
                 entity.HasOne(d => d.IdConsolaNavigation)
                     .WithMany(p => p.Juego)
                     .HasForeignKey(d => d.IdConsola)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_Consola");
+
+                entity.HasOne(d => d.IdDesarroladoresNavigation)
+                    .WithMany(p => p.Juego)
+                    .HasForeignKey(d => d.IdDesarroladores)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_Desarroladores");
 
                 entity.HasOne(d => d.IdGeneroNavigation)
                     .WithMany(p => p.Juego)
@@ -221,73 +256,175 @@ namespace GameStore.Datos
                     .HasMaxLength(40)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Dni)
+                entity.Property(e => e.Calle)
+                    .IsRequired()
+                    .HasMaxLength(40)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CodigoPostal)
+                    .IsRequired()
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Documento)
                     .IsRequired()
                     .HasMaxLength(15)
                     .IsUnicode(false);
 
-                entity.Property(e => e.IdDireccion).HasColumnType("numeric(18, 0)");
+                entity.Property(e => e.Email)
+                    .IsRequired()
+                    .HasMaxLength(40)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.IdCiudad).HasColumnType("numeric(18, 0)");
+
+                entity.Property(e => e.IdTipoDocumento).HasColumnType("numeric(18, 0)");
+
+                entity.Property(e => e.IdTipoPersona).HasColumnType("numeric(18, 0)");
+
+                entity.Property(e => e.IdTipoTelefono).HasColumnType("numeric(18, 0)");
 
                 entity.Property(e => e.Nombre)
                     .IsRequired()
                     .HasMaxLength(40)
                     .IsUnicode(false);
 
+                entity.Property(e => e.NumeroCalle)
+                    .IsRequired()
+                    .HasMaxLength(6)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.Telefono)
+                    .IsRequired()
                     .HasMaxLength(15)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.IdDireccionNavigation)
+                entity.HasOne(d => d.IdCiudadNavigation)
                     .WithMany(p => p.Persona)
-                    .HasForeignKey(d => d.IdDireccion)
-                    .HasConstraintName("fk_Direccion");
+                    .HasForeignKey(d => d.IdCiudad)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_CiudadPersona");
+
+                entity.HasOne(d => d.IdTipoDocumentoNavigation)
+                    .WithMany(p => p.Persona)
+                    .HasForeignKey(d => d.IdTipoDocumento)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_TipoDocumento");
+
+                entity.HasOne(d => d.IdTipoPersonaNavigation)
+                    .WithMany(p => p.Persona)
+                    .HasForeignKey(d => d.IdTipoPersona)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_TipoPersona");
+
+                entity.HasOne(d => d.IdTipoTelefonoNavigation)
+                    .WithMany(p => p.Persona)
+                    .HasForeignKey(d => d.IdTipoTelefono)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_TipoTelefono");
             });
 
-            modelBuilder.Entity<Proveedor>(entity =>
+            modelBuilder.Entity<Provincia>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnType("numeric(18, 0)");
 
-                entity.Property(e => e.IdPersona).HasColumnType("numeric(18, 0)");
-
-                entity.HasOne(d => d.IdPersonaNavigation)
-                    .WithMany(p => p.Proveedor)
-                    .HasForeignKey(d => d.IdPersona)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_PersonaProveedor");
+                entity.Property(e => e.Nombre)
+                    .IsRequired()
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<Sucursal>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnType("numeric(18, 0)");
 
-                entity.Property(e => e.IdDireccion).HasColumnType("numeric(18, 0)");
+                entity.Property(e => e.Calle)
+                    .IsRequired()
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CodigoPostal)
+                    .IsRequired()
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.IdCiudad).HasColumnType("numeric(18, 0)");
 
                 entity.Property(e => e.Nombre)
                     .IsRequired()
                     .HasMaxLength(40)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.IdDireccionNavigation)
+                entity.Property(e => e.Numero)
+                    .IsRequired()
+                    .HasMaxLength(6)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.IdCiudadNavigation)
                     .WithMany(p => p.Sucursal)
-                    .HasForeignKey(d => d.IdDireccion)
-                    .HasConstraintName("fk_DireccionSucursal");
+                    .HasForeignKey(d => d.IdCiudad)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_CiudadSucursal");
+            });
+
+            modelBuilder.Entity<TipoDocumento>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnType("numeric(18, 0)");
+
+                entity.Property(e => e.Nombre)
+                    .IsRequired()
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<TipoPersona>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnType("numeric(18, 0)");
+
+                entity.Property(e => e.Nombre)
+                    .IsRequired()
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<TipoTelefono>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnType("numeric(18, 0)");
+
+                entity.Property(e => e.Nombre)
+                    .IsRequired()
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<Venta>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnType("numeric(18, 0)");
 
+                entity.Property(e => e.FacturaNumero)
+                    .IsRequired()
+                    .HasMaxLength(15)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.Fecha).HasColumnType("datetime");
 
-                entity.Property(e => e.IdCliente).HasColumnType("numeric(18, 0)");
+                entity.Property(e => e.IdPersona).HasColumnType("numeric(18, 0)");
+
+                entity.Property(e => e.IdSucursal).HasColumnType("numeric(18, 0)");
 
                 entity.Property(e => e.Total).HasColumnType("decimal(18, 0)");
 
-                entity.HasOne(d => d.IdClienteNavigation)
+                entity.HasOne(d => d.IdPersonaNavigation)
                     .WithMany(p => p.Venta)
-                    .HasForeignKey(d => d.IdCliente)
+                    .HasForeignKey(d => d.IdPersona)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_Cliente");
+                    .HasConstraintName("fk_PersonaVenta");
+
+                entity.HasOne(d => d.IdSucursalNavigation)
+                    .WithMany(p => p.Venta)
+                    .HasForeignKey(d => d.IdSucursal)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_SucursalVenta");
             });
 
             OnModelCreatingPartial(modelBuilder);

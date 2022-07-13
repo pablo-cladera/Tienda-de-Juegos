@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace GameStore.Models
+namespace GameStore.Models.Entities
 {
     public partial class Genero
     {

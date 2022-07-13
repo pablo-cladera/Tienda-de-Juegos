@@ -27,16 +27,14 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 
-//private readonly string _MyCors = "MyCors";
-
-builder.Services.AddTransient<IClienteServices, ClienteServices>();
+builder.Services.AddTransient<IPersonaServices, PersonaServices>();
 builder.Services.AddTransient<IJuegoServices, JuegoServices>();
 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("corsPolicy", builder =>
     {
-        //builder.WithOrigins("http://http://localhost:4200");
+        //builder.WithOrigins("http://localhost:4200");
         builder.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost")
         .AllowAnyHeader().AllowAnyMethod();
     });

@@ -8,5 +8,7 @@
 
         public string? Genero { get;set; }
 
+        public string? Precio { get; set; }
+
     }
 }
