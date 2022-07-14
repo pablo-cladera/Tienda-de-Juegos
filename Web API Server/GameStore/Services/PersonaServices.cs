@@ -25,13 +25,23 @@ namespace GameStore.Services
         public IEnumerable<Persona> GetAll()
         {
             return _context.Persona.Include(c => c.IdTipoPersonaNavigation)
+                                   .Include(c => c.IdCiudadNavigation)
                                    .ToList();
         }
 
         public Persona GetOne(decimal clienteId)
         {
             
-            return _context.Persona.SingleOrDefault(x => x.Id == clienteId);
+            return _context.Persona.Include(c => c.IdTipoPersonaNavigation)
+                                   .Include(c => c.IdCiudadNavigation)
+                                   .SingleOrDefault(x => x.Id == clienteId);
+        }
+
+        public IEnumerable<Persona> GetByName(string nombrePersona)
+        {
+            return _context.Persona.Where(x => EF.Functions.Like(x.Nombre, $"%{nombrePersona}%"))
+                                 .Include(c => c.IdCiudadNavigation)
+                                 .Include(c => c.IdTipoPersonaNavigation);
         }
 
         public void DeletePersona(Persona persona)
@@ -47,7 +57,18 @@ namespace GameStore.Services
             if (persona != null)
             {
                 persona.Id = data.Id;
-                //persona.IdPersona = data.IdPersona;
+                persona.Nombre = data.Nombre;
+                persona.Apellido = data.Apellido;
+                persona.IdTipoPersona = data.IdTipoPersona;
+                persona.IdTipoDocumento = data.IdTipoDocumento;
+                persona.Documento = data.Documento;
+                persona.IdTipoTelefono = data.IdTipoTelefono;
+                persona.Telefono = data.Telefono;
+                persona.Email = data.Email;
+                persona.Calle = data.Calle;
+                persona.NumeroCalle = data.NumeroCalle;
+                persona.IdCiudad = data.IdCiudad;
+                persona.CodigoPostal = data.CodigoPostal;
 
                 _context.SaveChanges();
             }
@@ -57,7 +78,27 @@ namespace GameStore.Services
 
         public Persona CreatePersona(PersonaCreateOrUpdateDate data)
         {
-            throw new NotImplementedException();
+            var persona = new Persona()
+            {
+                Id = data.Id,
+                Nombre = data.Nombre,
+                Apellido = data.Apellido,
+                IdTipoPersona = data.IdTipoPersona,
+                IdTipoDocumento = data.IdTipoDocumento,
+                Documento = data.Documento,
+                IdTipoTelefono = data.IdTipoTelefono,
+                Telefono = data.Telefono,
+                Email = data.Email,
+                Calle = data.Calle,
+                NumeroCalle = data.NumeroCalle,
+                IdCiudad = data.IdCiudad,
+                CodigoPostal = data.CodigoPostal,
+        };
+            _context.Persona.Add(persona);
+            _context.SaveChanges();
+
+            return persona;
         }
     }
+    
 }

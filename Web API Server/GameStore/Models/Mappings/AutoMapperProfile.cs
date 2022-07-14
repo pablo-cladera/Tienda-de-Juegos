@@ -27,6 +27,7 @@ namespace GameStore.Models.Mappings
             CreateMap<Persona, PersonaViewModel>()
                 .ForMember(x => x.Nombre, opt => opt.MapFrom(o => o.Nombre))
                 .ForMember(x => x.Apellido, opt => opt.MapFrom(o => o.Apellido))
+                .ForMember(x => x.Ciudad, opt => opt.MapFrom(o => o.IdCiudadNavigation.Nombre))
                 .ForMember(x => x.TipoPersona, opt => opt.MapFrom(o => o.IdTipoPersonaNavigation.Nombre));
 
 

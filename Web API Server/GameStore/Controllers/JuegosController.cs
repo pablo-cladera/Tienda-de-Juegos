@@ -98,7 +98,7 @@ namespace GameStore.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
 
-        public ActionResult<JuegoLiteDTO>UpdateJuego(JuegoCreateOrUpdateDate juegoData)
+        public ActionResult<JuegoCreateOrUpdateDate> UpdateJuego(JuegoCreateOrUpdateDate juegoData)
         {
             if (juegoData == null)
             {

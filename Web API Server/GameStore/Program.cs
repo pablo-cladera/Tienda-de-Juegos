@@ -34,9 +34,9 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("corsPolicy", builder =>
     {
-        //builder.WithOrigins("http://localhost:4200");
-        builder.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost")
-        .AllowAnyHeader().AllowAnyMethod();
+        builder.WithOrigins("http://localhost:4200");
+        //builder.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost")
+        //.AllowAnyHeader().AllowAnyMethod();
     });
 });
 

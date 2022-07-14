@@ -9,6 +9,7 @@ namespace GameStore.Services.Interfaces
         IEnumerable<Persona> GetAll();
 
         Persona GetOne(decimal personaId);
+        IEnumerable<Persona> GetByName(string nombrePersona);
 
         void DeletePersona(Persona persona);
 

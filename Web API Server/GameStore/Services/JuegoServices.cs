@@ -56,7 +56,13 @@ namespace GameStore.Services
                 juego.Nombre = data.Nombre;
                 juego.IdGenero = data.IdGenero;
                 juego.IdConsola = data.IdConsola;
+                juego.IdDesarroladores = data.IdDesarroladores;
+                juego.IdClasificacion = data.IdClasificacion;
+                juego.AñoLanzamiento = data.AñoLanzamiento;
+                juego.Precio = data.Precio;
                 juego.Stock = data.Stock;
+                juego.StockMin = data.StockMin;
+                juego.StockMax = data.StockMax;
 
                 _context.SaveChanges();
             }
@@ -72,8 +78,14 @@ namespace GameStore.Services
                 Nombre = data.Nombre,
                 IdGenero = data.IdGenero,
                 IdConsola = data.IdConsola,
-                Stock = data.Stock
-            };
+                IdDesarroladores = data.IdDesarroladores,
+                IdClasificacion = data.IdClasificacion,
+                AñoLanzamiento = data.AñoLanzamiento,
+                Precio = data.Precio,
+                Stock = data.Stock,
+                StockMin = data.StockMin,
+                StockMax = data.StockMax
+        };
             _context.Juego.Add(juego);
             _context.SaveChanges();
 
