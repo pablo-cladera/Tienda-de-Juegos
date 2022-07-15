@@ -1,0 +1,65 @@
+<table *ngIf="resultados.length > 0" class="animate__animated animate__fadeIn table table-hover">
+    <thead>
+        <tr>
+            <th>
+                DNI
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Apellido
+            </th>           
+            <th>
+                Telefono
+            </th>
+            <th>
+                Ciudad
+            </th>   
+            <th>
+                Calle
+            </th>
+            <th>
+                Numero
+            </th>   
+            <th>
+                Codigo Postal
+            </th>         
+                                                                     
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let pers of resultados;">
+            <td>
+                {{pers.dni}}
+            </td>
+            <td>
+                {{pers.nombre}}
+            </td>
+            <td>
+                {{pers.apellido}}
+            </td>
+            <td>
+                {{pers.telefono}}
+            </td>          
+            <td>
+                {{pers.nombreCiudad}}
+            </td>
+            <td>
+                {{pers.nombreCalle}}
+            </td>
+            <td>
+                {{pers.numeroCalle}}
+            </td>
+            <td>
+                {{pers.codigoPostal}}
+            </td>
+
+            <td>
+                <a [routerLink] = "['/edit-pers',pers.nombre]">
+                    Ver
+                </a>
+            </td>                                                           
+        </tr>
+    </tbody>            
+</table>

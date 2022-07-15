@@ -1,0 +1,153 @@
+<h2>Nueva Persona:  </h2>
+
+<div class="row">
+    <div class="col">
+        <form autocomplete="off"
+              (ngSubmit)="guardar()"
+              [formGroup]="miForm">
+
+
+              <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Ingresar DNI</label>
+                <div class="col-sm-9">
+                  <input type="number" 
+                         class="form-control" 
+                         placeholder="DNI sin puntos"
+                         formControlName="dni">
+                         <span class="form-text text-danger"
+                               *ngIf="tieneerror('dni')">
+                            Ingrese DNI sin puntos
+                         </span>                         
+                </div>
+                </div>
+
+            
+            
+
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label">Nombre Persona</label>
+                    <div class="col-sm-9">
+                    <input type="text" 
+                            class="form-control" 
+                            placeholder="Nombre de la Persona"
+                            formControlName="nombre"
+                            >
+                            <span class="form-text text-danger"
+                                *ngIf="tieneerror('nombre')">
+                                Minimo 3 letras
+                            </span>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label">Apellido Persona</label>
+                    <div class="col-sm-9">
+                    <input type="text" 
+                            class="form-control" 
+                            placeholder="Apellido de la Persona"
+                            formControlName="apellido"
+                            >
+                            <span class="form-text text-danger"
+                                *ngIf="tieneerror('apellido')">
+                                Minimo 3 letras
+                            </span>
+                    </div>
+                </div>    
+                
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label">Telefono Persona</label>
+                    <div class="col-sm-9">
+                    <input type="text" 
+                            class="form-control" 
+                            placeholder="Telefono de la Persona"
+                            formControlName="telefono"
+                            >
+                            <span class="form-text text-danger"
+                                *ngIf="tieneerror('telefono')">
+                                Minimo 3 letras
+                            </span>
+                    </div>
+                </div>  
+
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label">Nombre de la Ciudad</label>
+                    <div class="col-sm-9">
+                    <input type="text" 
+                            class="form-control" 
+                            placeholder="Ciudad en la que vive la Persona"
+                            formControlName="nombreCiudad"
+                            >
+                            <span class="form-text text-danger"
+                                *ngIf="tieneerror('nombreCiudad')">
+                                Minimo 3 letras
+                            </span>
+                    </div>
+                </div> 
+                
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label">Nombre Calle</label>
+                    <div class="col-sm-9">
+                    <input type="text" 
+                            class="form-control" 
+                            placeholder="Nombre de la Calle en la que vive la Persona"
+                            formControlName="nombreCalle"
+                            >
+                            <span class="form-text text-danger"
+                                *ngIf="tieneerror('nombreCalle')">
+                                Minimo 3 letras
+                            </span>
+                    </div>
+                </div>  
+
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label">Numero Calle</label>
+                    <div class="col-sm-9">
+                    <input type="number" 
+                            class="form-control" 
+                            placeholder="Numero de la Calle en la que vive la Persona"
+                            formControlName="numeroCalle">
+                            <span class="form-text text-danger"
+                                *ngIf="tieneerror('numeroCalle')">
+                                Ingrese DNI sin puntos
+                            </span>                         
+                    </div>
+                </div>  
+
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label">Codigo Postal</label>
+                    <div class="col-sm-9">
+                    <input type="text" 
+                            class="form-control" 
+                            placeholder="Apellido de la Persona"
+                            formControlName="apellido"
+                            >
+                            <span class="form-text text-danger"
+                                *ngIf="tieneerror('apellido')">
+                                Minimo 3 letras
+                            </span>
+                    </div>
+                </div>  
+
+           
+            <div class="row">
+                <div class="col">
+                    <button type="submit"
+                            class="btn btn-primary float-end">
+                        Guardar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <span>Valid</span>
+    <pre>{{miForm.valid}}</pre>
+
+    <span>Pristine</span>
+    <pre>{{miForm.pristine}}</pre>        
+    <span>Touched</span>
+    <pre>{{miForm.touched}}</pre>             
+
+</div>
