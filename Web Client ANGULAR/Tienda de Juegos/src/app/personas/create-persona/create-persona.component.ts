@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+//import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PersonaCreate } from '../interfaces/personacreate.interface';
 import { PersonasService } from '../services/personas.service';
+//import { PersonasModule } from '../personas.module';
 
 
 @Component({
@@ -15,12 +17,17 @@ export class CreatePersonaComponent implements OnInit
  {
   miForm = this.formBuilder.group(
     {
-      dni: [, [Validators.required, Validators.minLength(4)] ],
+      id: [, [Validators.required, Validators.min(1)]],
+      idTipoDocumento: [, [Validators.required, Validators.minLength(4)]],
+      documento: [, [Validators.required, Validators.minLength(4)]],
+      idTipoPersona: [, [Validators.required, Validators.minLength(4)]],
       nombre: [, [Validators.required, Validators.minLength(3)]],
       apellido: [, [Validators.required, Validators.minLength(3)]],
+      idTipoTelefono: [, [Validators.required, Validators.minLength(4)]],
       telefono: [, [Validators.required, Validators.minLength(3)]],
-      nombreCiudad: [, [Validators.required, Validators.minLength(3)]],
-      nombreCalle: [, [Validators.required, Validators.minLength(3)]],
+      email: [, [Validators.required, Validators.minLength(3)]],
+      ciudad: [, [Validators.required, Validators.minLength(3)]],
+      calle: [, [Validators.required, Validators.minLength(3)]],
       numeroCalle: [, [Validators.required, Validators.minLength(2)]],
       codigoPostal: [, [Validators.required, Validators.minLength(3)]]
     }
@@ -33,12 +40,12 @@ export class CreatePersonaComponent implements OnInit
     const ran = 5;
     this.miForm.reset(
       {
-        stock : 5
+        calle: "9 de julio",
       }
     ); 
   }
 
-  tieneerror(field:string)
+  tieneError(field:string)
   {
     return this.miForm.controls[field].errors &&
            this.miForm.controls[field].touched;
@@ -53,24 +60,29 @@ export class CreatePersonaComponent implements OnInit
 
     console.log('guardando persona');
 
-    const newpers: PersonaCreate = 
+    const newPersona: PersonaCreate = 
     {
-      dni: this.miForm.controls['dni'].value,
+      id: this.miForm.controls['id'].value,
       nombre: this.miForm.controls['nombre'].value,
       apellido: this.miForm.controls['apellido'].value,
+      idTipoPersona: this.miForm.controls['idTipoPersona'].value,
+      idTipoDocumento: this.miForm.controls['idTipoDocumento'].value,
+      documento: this.miForm.controls['documento'].value,
+      idTipoTelefono: this.miForm.controls['idTipoTelefono'].value,
       telefono: this.miForm.controls['telefono'].value,
-      nombreCiudad: this.miForm.controls['nombreCiudad'].value,
-      nombreCalle: this.miForm.controls['nombreCalle'].value,
+      email: this.miForm.controls['email'].value,
+      calle: this.miForm.controls['calle'].value,
       numeroCalle: this.miForm.controls['numeroCalle'].value,
+      ciudad: this.miForm.controls['ciudad'].value,
       codigoPostal: this.miForm.controls['codigoPostal'].value,
       
     }
 
-    this.personaService.crear(newpers);
+    this.personaService.crear(newPersona);
 
     this.miForm.reset(
       {
-        stock : 5
+        calle: "9 de julio",
       }      
     );    
   }

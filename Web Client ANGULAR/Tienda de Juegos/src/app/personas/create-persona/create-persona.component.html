@@ -1,28 +1,24 @@
 <h2>Nueva Persona:  </h2>
-
+<hr>
 <div class="row">
     <div class="col">
         <form autocomplete="off"
               (ngSubmit)="guardar()"
-              [formGroup]="miForm">
-
+              >
 
               <div class="mb-3 row">
-                <label class="col-sm-3 col-form-label">Ingresar DNI</label>
+                <label class="col-sm-3 col-form-label">ID</label>
                 <div class="col-sm-9">
                   <input type="number" 
                          class="form-control" 
-                         placeholder="DNI sin puntos"
-                         formControlName="dni">
+                         placeholder="ID"
+                         formControlName="id">
                          <span class="form-text text-danger"
-                               *ngIf="tieneerror('dni')">
-                            Ingrese DNI sin puntos
+                               *ngIf="tieneError('id')">
+                            Ingrese ID
                          </span>                         
                 </div>
                 </div>
-
-            
-            
 
                 <div class="mb-3 row">
                     <label class="col-sm-3 col-form-label">Nombre Persona</label>
@@ -33,7 +29,7 @@
                             formControlName="nombre"
                             >
                             <span class="form-text text-danger"
-                                *ngIf="tieneerror('nombre')">
+                                *ngIf="tieneError('nombre')">
                                 Minimo 3 letras
                             </span>
                     </div>
@@ -48,52 +44,108 @@
                             formControlName="apellido"
                             >
                             <span class="form-text text-danger"
-                                *ngIf="tieneerror('apellido')">
+                                *ngIf="tieneError('apellido')">
                                 Minimo 3 letras
                             </span>
                     </div>
-                </div>    
+                </div> 
+
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label">ID Tipo Persona</label>
+                    <div class="col-sm-9">
+                      <input type="number" 
+                             class="form-control" 
+                             placeholder="ID"
+                             formControlName="idTipoPersona">
+                             <span class="form-text text-danger"
+                                   *ngIf="tieneError('idTipoPersona')">
+                                Ingrese ID
+                             </span>                         
+                    </div>
+                    </div>
+
+                
+                    <div class="mb-3 row">
+                        <label class="col-sm-3 col-form-label">ID Tipo Documento</label>
+                        <div class="col-sm-9">
+                          <input type="number" 
+                                 class="form-control" 
+                                 placeholder="ID"
+                                 formControlName="idTipoDocumento">
+                                 <span class="form-text text-danger"
+                                       *ngIf="tieneError('idTipoDocumento')">
+                                    Ingrese ID
+                                 </span>                         
+                        </div>
+                        </div>
+
+              <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Ingresar Documento</label>
+                <div class="col-sm-9">
+                  <input type="number" 
+                         class="form-control" 
+                         placeholder="DNI sin puntos"
+                         formControlName="documento">
+                         <span class="form-text text-danger"
+                               *ngIf="tieneError('documento')">
+                            Ingrese DNI sin puntos
+                         </span>                         
+                </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label">ID Tipo Telefono</label>
+                    <div class="col-sm-9">
+                      <input type="number" 
+                             class="form-control" 
+                             placeholder="ID"
+                             formControlName="idTipoTelefono">
+                             <span class="form-text text-danger"
+                                   *ngIf="tieneError('idTipoTelefono')">
+                                Ingrese ID
+                             </span>                         
+                    </div>
+                    </div>
+   
                 
                 <div class="mb-3 row">
-                    <label class="col-sm-3 col-form-label">Telefono Persona</label>
+                    <label class="col-sm-3 col-form-label">Telefono</label>
                     <div class="col-sm-9">
                     <input type="text" 
                             class="form-control" 
                             placeholder="Telefono de la Persona"
-                            formControlName="telefono"
-                            >
+                            formControlName="telefono">
                             <span class="form-text text-danger"
-                                *ngIf="tieneerror('telefono')">
+                                *ngIf="tieneError('telefono')">
                                 Minimo 3 letras
                             </span>
                     </div>
                 </div>  
 
                 <div class="mb-3 row">
-                    <label class="col-sm-3 col-form-label">Nombre de la Ciudad</label>
+                    <label class="col-sm-3 col-form-label">eMail</label>
                     <div class="col-sm-9">
                     <input type="text" 
                             class="form-control" 
-                            placeholder="Ciudad en la que vive la Persona"
-                            formControlName="nombreCiudad"
-                            >
+                            placeholder="Emailo de la Persona"
+                            formControlName="email">
                             <span class="form-text text-danger"
-                                *ngIf="tieneerror('nombreCiudad')">
+                                *ngIf="tieneError('email')">
                                 Minimo 3 letras
                             </span>
                     </div>
-                </div> 
-                
+                </div>
+
                 <div class="mb-3 row">
                     <label class="col-sm-3 col-form-label">Nombre Calle</label>
                     <div class="col-sm-9">
                     <input type="text" 
                             class="form-control" 
                             placeholder="Nombre de la Calle en la que vive la Persona"
-                            formControlName="nombreCalle"
+                            formControlName="calle"
                             >
                             <span class="form-text text-danger"
-                                *ngIf="tieneerror('nombreCalle')">
+                                *ngIf="tieneError('calle')">
                                 Minimo 3 letras
                             </span>
                     </div>
@@ -107,11 +159,29 @@
                             placeholder="Numero de la Calle en la que vive la Persona"
                             formControlName="numeroCalle">
                             <span class="form-text text-danger"
-                                *ngIf="tieneerror('numeroCalle')">
+                                *ngIf="tieneError('numeroCalle')">
                                 Ingrese DNI sin puntos
                             </span>                         
                     </div>
-                </div>  
+                </div> 
+
+
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label">ID Ciudad</label>
+                    <div class="col-sm-9">
+                    <input type="text" 
+                            class="form-control" 
+                            placeholder="ID de la Ciudad en la que vive la Persona"
+                            formControlName="ciudad"
+                            >
+                            <span class="form-text text-danger"
+                                *ngIf="tieneError('ciudad')">
+                                Minimo 3 letras
+                            </span>
+                    </div>
+                </div> 
+                
+ 
 
                 <div class="mb-3 row">
                     <label class="col-sm-3 col-form-label">Codigo Postal</label>
@@ -119,10 +189,10 @@
                     <input type="text" 
                             class="form-control" 
                             placeholder="Apellido de la Persona"
-                            formControlName="apellido"
+                            formControlName="codigoPostal"
                             >
                             <span class="form-text text-danger"
-                                *ngIf="tieneerror('apellido')">
+                                *ngIf="tieneError('codigoPostal')">
                                 Minimo 3 letras
                             </span>
                     </div>
@@ -133,7 +203,7 @@
                 <div class="col">
                     <button type="submit"
                             class="btn btn-primary float-end">
-                        Guardar
+                        guardar
                     </button>
                 </div>
             </div>

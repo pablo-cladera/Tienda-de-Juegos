@@ -1,11 +1,16 @@
 export interface PersonaViewModel 
 {
-    dni:           number;
-    nombre:        string;
-    apellido:      string;
-    telefono:      string;
-    nombreCiudad:  string;
-    nombreCalle:   string;
-    numeroCalle:   number;
-    codigoPostal:  string;
+    id:              number;
+    nombre:          string;
+    apellido:        string;
+    idTipoPersona:   number;
+    idTipoDocumento: number;
+    documento:       string;
+    idTipoTelefono:  number;
+    telefono:        string;
+    email:           string;
+    calle:           string;
+    numeroCalle:     number;
+    ciudad:          string;
+    codigoPostal:    string;
 }

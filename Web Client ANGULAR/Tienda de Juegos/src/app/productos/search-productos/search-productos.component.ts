@@ -22,4 +22,5 @@ export class SearchProductosComponent  {
     this.txtBuscar.nativeElement.value = '';
   }
  
+  
 }

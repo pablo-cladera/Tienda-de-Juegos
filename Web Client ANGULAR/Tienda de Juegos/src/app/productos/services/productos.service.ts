@@ -5,6 +5,7 @@ import { environment } from '../../../environments/environment.prod';
 import { ProductoLite } from '../interfaces/productolite.interface';
 import { Observable } from "rxjs";
 import { ProductoCreate } from '../interfaces/productocreate.interface';
+import { catchError } from "rxjs/operators";
 
 @Injectable()
 export class ProductosService {
@@ -68,4 +69,12 @@ export class ProductosService {
         this.http.put(`${this.urlProd}create`, nuevoProd)
                  .subscribe();
     }
+
+    eliminarService(argumento: number) {
+        console.log('Calling WebApi');
+        this.http.put(`${this.urlProd}delete`,argumento)
+                 .subscribe();
+    }
+
+
 }

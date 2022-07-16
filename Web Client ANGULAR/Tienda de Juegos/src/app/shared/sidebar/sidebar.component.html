@@ -1,4 +1,4 @@
-<h2>Tienda de Juegos</h2>
+<!-- <h2>Tienda de Juegos</h2>
 <hr>
 <ul class="list-group">
   <li class="list-group-item"
@@ -12,4 +12,43 @@
       routerLinkActive="active">
       Nuevo Juego
   </li>
-</ul>
+</ul> -->
+
+<p>
+  <mat-toolbar color="primary">
+
+    <div class="col-2">
+      <button mat-button color="basic" routerLink="**"> <mat-icon>home</mat-icon>  GAME STORE</button>
+    </div>
+
+    <h3>JUEGOS: </h3>
+    <div class="col-4">
+
+      <button mat-button color="basic" routerLink="crear-prod"> <mat-icon>note_add</mat-icon>  Agregar</button>
+      <button mat-button [matMenuTriggerFor]="menuSony"><mat-icon>videogame_asset</mat-icon>  SONY</button>
+        <mat-menu #menuSony="matMenu">
+          <button mat-menu-item>Play Station 5</button>
+          <button mat-menu-item>Play Station 4</button>
+          <button mat-menu-item>Play Station 3</button>
+        </mat-menu>
+
+        <button mat-button [matMenuTriggerFor]="menuMicrosoft"><mat-icon>games</mat-icon>  Microsoft</button>
+        <mat-menu #menuMicrosoft="matMenu">
+          <button mat-menu-item>XBox Serie</button>
+          <button mat-menu-item>XBox One</button>
+          <button mat-menu-item>XBox 360</button>
+        </mat-menu>
+    </div>
+
+    <h3>PERSONAS: </h3>
+    <div class="col-4">
+      <button mat-button color="basic" routerLink="crear-pers" > <mat-icon>person_add</mat-icon>  Agregar</button>
+      <button mat-button color="basic"> <mat-icon>person</mat-icon>  Clientes</button>
+      <button mat-button color="basic"> <mat-icon>person</mat-icon>  Proveedores</button>
+    </div>
+
+  </mat-toolbar>
+
+  <router-outlet></router-outlet>
+</p>
+

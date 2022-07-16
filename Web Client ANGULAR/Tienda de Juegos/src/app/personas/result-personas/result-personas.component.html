@@ -1,17 +1,29 @@
 <table *ngIf="resultados.length > 0" class="animate__animated animate__fadeIn table table-hover">
     <thead>
-        <tr>
+        <tr> 
+            <th>
+                Tipo Documento
+            </th>
             <th>
                 DNI
+            </th>
+            <th>
+                Tipo Persona
             </th>
             <th>
                 Nombre
             </th>
             <th>
                 Apellido
-            </th>           
+            </th>
+            <th>
+                Tipo Telefono
+            </th>    
             <th>
                 Telefono
+            </th>
+            <th>
+                Email
             </th>
             <th>
                 Ciudad
@@ -31,7 +43,10 @@
     <tbody>
         <tr *ngFor="let pers of resultados;">
             <td>
-                {{pers.dni}}
+                {{pers.idTipoDocumento}}
+            </td>
+            <td>
+                {{pers.documento}}
             </td>
             <td>
                 {{pers.nombre}}
@@ -43,10 +58,10 @@
                 {{pers.telefono}}
             </td>          
             <td>
-                {{pers.nombreCiudad}}
+                {{pers.ciudad}}
             </td>
             <td>
-                {{pers.nombreCalle}}
+                {{pers.calle}}
             </td>
             <td>
                 {{pers.numeroCalle}}

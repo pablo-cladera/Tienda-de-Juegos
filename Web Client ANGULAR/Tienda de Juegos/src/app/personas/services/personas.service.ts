@@ -5,6 +5,7 @@ import { environment } from '../../../environments/environment.prod';
 import { PersonaLite } from '../interfaces/personalite.interface';
 import { Observable } from "rxjs";
 import { PersonaCreate } from '../interfaces/personacreate.interface';
+import { catchError } from "rxjs/operators";
 
 @Injectable()
 export class PersonasService {
@@ -61,4 +62,27 @@ export class PersonasService {
         this.http.put(`${this.urlProd}create`, nuevaPers)
                  .subscribe();
     }
+
+    // buscarTipo(idTipoPersona: number)
+    // {
+    //     console.log('Calling WebApi');
+
+    //     this.http.get<PersonaViewModel[]>(`${this.urlProd}byId?`, idTipoPersona)
+    //         .subscribe(
+    //             resp => {
+    //                 if(idTipoPersona == 1){
+    //                     this._personas = resp;
+    //                 }
+    //                 else if(idTipoPersona == 2)
+    //                 {
+    //                     this._proveedores = resp;
+    //                 }
+                    
+    //             }
+    //         );
+    //     if (!this._historial.includes(`${idTipoPersona}`)){
+    //         this._historial.push(`${idTipoPersona}`);
+    //         localStorage.setItem('historial',JSON.stringify(this._historial));
+    //     }
+    // }
 }

@@ -12,13 +12,17 @@ import { ProductosService } from '../services/productos.service';
 export class CreateProductoComponent implements OnInit {
   miForm = this.formBuilder.group(
     {
-      // codigo: [, [Validators.required, Validators.minLength(3)] ],
+      id: [, [Validators.required, Validators.minLength(1)] ],
       nombre: [, [Validators.required, Validators.minLength(3)]],
-      genero: [, [Validators.required, Validators.min(1)]],
-      consola: [, [Validators.required, Validators.min(1)]],
-      stock: [, [Validators.required, Validators.min(0)]]
-      // stockmin: [, [Validators.required, Validators.min(0)]],
-      // stockmax: [, [Validators.required, Validators.min(0)]]
+      idGenero: [, [Validators.required, Validators.min(1)]],
+      idConsola: [, [Validators.required, Validators.min(1)]],
+      idDesarrolladores: [, [Validators.required, Validators.min(1)]],
+      idClasificacion: [, [Validators.required, Validators.min(1)]],
+      añoLanzamiento: [, [Validators.required, Validators.min(1)]],
+      precio: [, [Validators.required, Validators.min(1)]],
+      stock: [, [Validators.required, Validators.min(0)]],
+      stockmin: [, [Validators.required, Validators.min(0)]],
+      stockmax: [, [Validators.required, Validators.min(0)]]
     }
   )
 
@@ -34,7 +38,7 @@ export class CreateProductoComponent implements OnInit {
     ); 
   }
 
-  tieneerror(field:string){
+  tieneError(field:string){
     return this.miForm.controls[field].errors &&
            this.miForm.controls[field].touched;
   }
@@ -45,20 +49,24 @@ export class CreateProductoComponent implements OnInit {
       return;
     }
 
-    console.log('guardando producto');
+    console.log('guardando juego');
 
-    const newprod: ProductoCreate = {
-      // codigo: this.miForm.controls['codigo'].value,
-      // id: this.miForm.controls['id'].value,
+    const newJuego: ProductoCreate = {
+
+      id: this.miForm.controls['id'].value,
       nombre: this.miForm.controls['nombre'].value,
-      idGenero: this.miForm.controls['genero'].value,
-      idConsola: this.miForm.controls['consola'].value,
+      idGenero: this.miForm.controls['idGenero'].value,
+      idConsola: this.miForm.controls['idConsola'].value,
+      idDesarroladores: this.miForm.controls['idDesarrolladores'].value,
+      idClasificacion: this.miForm.controls['idClasificacion'].value,
+      añoLanzamiento: this.miForm.controls['añoLanzamiento'].value,
+      precio: this.miForm.controls['precio'].value,
       stock: this.miForm.controls['stock'].value,
-      // stockMin: this.miForm.controls['stockmin'].value,
-      // stockMax: this.miForm.controls['stockmax'].value,
+      stockMin: this.miForm.controls['stockmin'].value,
+      stockMax: this.miForm.controls['stockmax'].value,
     }
 
-    this.productoService.crear(newprod);
+    this.productoService.crear(newJuego);
 
     this.miForm.reset(
       {
