@@ -66,6 +66,40 @@ namespace GameStore.Controllers
             return Ok(juegoDTO);
         }
 
+        [Route("byConsola")]
+        [HttpGet]
+
+        public ActionResult<JuegoViewModel> GetByConsola(decimal IdConsola)
+        {
+            var juego = _juegoService.GetByConsola(IdConsola);
+
+            if (juego == null)
+            {
+                return NotFound();
+            }
+
+            var juegoConsola = _mapper.Map<IEnumerable<JuegoViewModel>>(juego);
+
+            return Ok(juegoConsola);
+        }
+
+        [Route("byGenero")]
+        [HttpGet]
+
+        public ActionResult<JuegoViewModel> GetByGenero(decimal IdGenero)
+        {
+            var juego = _juegoService.GetByGenero(IdGenero);
+
+            if (juego == null)
+            {
+                return NotFound();
+            }
+
+            var juegoGenero = _mapper.Map<IEnumerable<JuegoViewModel>>(juego);
+
+            return Ok(juegoGenero);
+        }
+
 
         [HttpDelete("{Id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]

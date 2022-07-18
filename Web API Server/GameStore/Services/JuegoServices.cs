@@ -24,6 +24,24 @@ namespace GameStore.Services
             //return _context.Juego.ToList();
         }
 
+        public IEnumerable<Juego> GetByConsola(decimal tipoConsola)
+        {
+            return _context.Juego.Where(x => x.IdConsola == tipoConsola)
+            //return _context.Persona.Where(x => EF.Functions.Like(x.IdTipoPersonaNavigation.Nombre, $"%{TipoPersona}%"))
+                                   .Include(c => c.IdGeneroNavigation)
+                                   .Include(c => c.IdConsolaNavigation)
+                                   .ToList();
+        }
+
+        public IEnumerable<Juego> GetByGenero(decimal tipoGenero)
+        {
+            return _context.Juego.Where(x => x.IdGenero == tipoGenero)
+            //return _context.Persona.Where(x => EF.Functions.Like(x.IdTipoPersonaNavigation.Nombre, $"%{TipoPersona}%"))
+                                   .Include(c => c.IdGeneroNavigation)
+                                   .Include(c => c.IdConsolaNavigation)
+                                   .ToList();
+        }
+
         public Juego GetOne(decimal Id)
         {
             return _context.Juego.Include(c => c.IdGeneroNavigation)

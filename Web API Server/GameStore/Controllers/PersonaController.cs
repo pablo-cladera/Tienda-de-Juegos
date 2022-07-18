@@ -50,6 +50,23 @@ namespace GameStore.Controllers
             return personaDTO;
         }
 
+        [Route("TipoPersona")]
+        [HttpGet]
+        public ActionResult<PersonaViewModel> GetTipoPersona(decimal tipoPersona)
+        {
+
+            var persona = _personaService.GetTipoPersona(tipoPersona);
+
+            if (persona == null)
+            {
+                return NotFound();
+            }
+
+            var personaDTO = _mapper.Map<IEnumerable<PersonaViewModel>>(persona);
+
+            return Ok(personaDTO);
+        }
+
         [HttpGet("{Id}")]
         public ActionResult<PersonaViewModel> GetOne(decimal Id)
         {
