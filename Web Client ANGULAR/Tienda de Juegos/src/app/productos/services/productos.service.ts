@@ -76,5 +76,11 @@ export class ProductosService {
                  .subscribe();
     }
 
+    upload(nuevoProd: ProductoCreate) {
+        console.log('Calling WebApi');
+        this.http.put(`${this.urlProd}upload`, nuevoProd)
+                 .subscribe();
+    }
+
 
 }

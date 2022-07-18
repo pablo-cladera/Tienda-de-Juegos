@@ -1,16 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-//import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PersonaCreate } from '../interfaces/personacreate.interface';
 import { PersonasService } from '../services/personas.service';
-//import { PersonasModule } from '../personas.module';
-
 
 @Component({
   selector: 'app-create-persona',
   templateUrl: './create-persona.component.html',
-  styles: [
-  ]
+  styles: []
 })
 
 export class CreatePersonaComponent implements OnInit
@@ -18,18 +14,18 @@ export class CreatePersonaComponent implements OnInit
   miForm = this.formBuilder.group(
     {
       id: [, [Validators.required, Validators.min(1)]],
-      idTipoDocumento: [, [Validators.required, Validators.minLength(4)]],
-      documento: [, [Validators.required, Validators.minLength(4)]],
-      idTipoPersona: [, [Validators.required, Validators.minLength(4)]],
       nombre: [, [Validators.required, Validators.minLength(3)]],
       apellido: [, [Validators.required, Validators.minLength(3)]],
-      idTipoTelefono: [, [Validators.required, Validators.minLength(4)]],
-      telefono: [, [Validators.required, Validators.minLength(3)]],
-      email: [, [Validators.required, Validators.minLength(3)]],
-      ciudad: [, [Validators.required, Validators.minLength(3)]],
+      idTipoPersona: [, [Validators.required, Validators.minLength(1)]],
+      idTipoDocumento: [, [Validators.required, Validators.minLength(1)]],
+      documento: [, [Validators.required, Validators.minLength(7)]],
+      idTipoTelefono: [, [Validators.required, Validators.minLength(1)]],
+      telefono: [, [Validators.required, Validators.minLength(6)]],
+      email: [, [Validators.required, Validators.minLength(5)]],
       calle: [, [Validators.required, Validators.minLength(3)]],
-      numeroCalle: [, [Validators.required, Validators.minLength(2)]],
-      codigoPostal: [, [Validators.required, Validators.minLength(3)]]
+      numeroCalle: [, [Validators.required, Validators.minLength(1)]],
+      ciudad: [, [Validators.required, Validators.minLength(3)]],
+      codigoPostal: [, [Validators.required, Validators.minLength(4)]]
     }
   )
 
@@ -40,7 +36,7 @@ export class CreatePersonaComponent implements OnInit
     const ran = 5;
     this.miForm.reset(
       {
-        calle: "9 de julio",
+        calle: "",
       }
     ); 
   }
@@ -82,7 +78,7 @@ export class CreatePersonaComponent implements OnInit
 
     this.miForm.reset(
       {
-        calle: "9 de julio",
+        calle: "",
       }      
     );    
   }

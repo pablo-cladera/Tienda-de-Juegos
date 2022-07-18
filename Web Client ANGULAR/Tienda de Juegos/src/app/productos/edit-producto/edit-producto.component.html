@@ -1,0 +1,204 @@
+
+<h2>Editar Juego:  </h2>
+<hr>
+<div class="row">
+    <div class="col">
+        <form autocomplete="on"
+              (ngSubmit)="guardar()"
+              [formGroup]="miForm">
+              
+              <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Id</label>
+                <div class="col-sm-9">
+                  <input type="text" 
+                         class="form-control" 
+                         placeholder="Ingresar ID"
+                         formControlName = "id" 
+                         >
+                </div>
+            </div>              
+
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Nombre Juego</label>
+                <div class="col-sm-9">
+                  <input type="text" 
+                         class="form-control" 
+                         placeholder="Nombre del Juego"
+                         formControlName="nombre"
+                         >
+                         <span class="form-text text-danger"
+                               *ngIf="tieneError('nombre')">
+                            Minimo 3 letras
+                        </span>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Genero</label>
+                <div class="col-sm-9">
+                    <select name="dropdown" 
+                         class="form-control"
+                         formControlName="idGenero">
+                        <option value="0" selected></option>
+                        <option value="1">Deporte</option>
+                        <option value="2">Aventura</option>
+                        <option value="3">Shooter</option>
+                    </select>                         
+                    <span class="form-text text-danger"
+                          *ngIf="tieneError('idGenero')">
+                        Seleccionar Genero del juego
+                    </span>
+                </div>
+            </div>
+            
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Consola</label>
+                <div class="col-sm-9">
+                    <select name="dropdown" 
+                         class="form-control"
+                         formControlName="idConsola">
+                        <option value="0" selected></option>
+                        <option value="1">PS5</option>
+                        <option value="2">PS4</option>
+                        <option value="3">PS3</option>
+                    </select>                         
+                    <span class="form-text text-danger"
+                          *ngIf="tieneError('idConsola')">
+                        Seleccionar Consola
+                    </span>
+                </div>
+            </div> 
+
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Desarrolladores</label>
+                <div class="col-sm-9">
+                    <select name="dropdown" 
+                         class="form-control"
+                         formControlName="idDesarrolladores">
+                        <option value="0" selected></option>
+                        <option value="1">EA SPORT</option>
+                        <option value="2">des 2</option>
+                        <option value="3">des 3</option>
+                    </select>                         
+                    <span class="form-text text-danger"
+                          *ngIf="tieneError('idDesarrolladores')">
+                        Seleccionar Desarrollador
+                    </span>
+                </div>
+            </div> 
+
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Clasificacion</label>
+                <div class="col-sm-9">
+                    <select name="dropdown" 
+                         class="form-control"
+                         formControlName="idClasificacion">
+                        <option value="0" selected></option>
+                        <option value="1">Todos</option>
+                        <option value="2">Adolescente</option>
+                        <option value="3">Maduros</option>
+                    </select>                         
+                    <span class="form-text text-danger"
+                          *ngIf="tieneError('idClasificacion')">
+                        Seleccionar Clasificacion
+                    </span>
+                </div>
+            </div> 
+
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Año de Lanzamiento</label>
+                <div class="col-sm-9">
+                  <input type="text" 
+                         class="form-control" 
+                         placeholder="Año de Lanzamiento"
+                         formControlName="añoLanzamiento"
+                         >
+                         <span class="form-text text-danger"
+                               *ngIf="tieneError('añoLanzamiento')">
+                            cuatro digitos
+                        </span>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Precio</label>
+                <div class="col-sm-9">
+                  <input type="text" 
+                         class="form-control" 
+                         placeholder="Precio"
+                         formControlName="precio"
+                         >
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Stock</label>
+                <div class="col-sm-9">
+                  <input type="number" 
+                         class="form-control" 
+                         placeholder="Ingresar Stock Actual"
+                         formControlName="stock">
+                         <span class="form-text text-danger"
+                               *ngIf="tieneError('stock')">
+                            Stock Actual mayor o igual que cero
+                         </span>                         
+                </div>
+            </div>            
+
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Stock Minimo</label>
+                <div class="col-sm-9">
+                  <input type="number" 
+                         class="form-control" 
+                         placeholder="Ingresar Stock Minimo"
+                         formControlName="stockmin">
+                         <span class="form-text text-danger"
+                               *ngIf="tieneError('stockmin')">
+                            Stock Minimo mayor o igual que cero
+                        </span>                         
+                </div>
+            </div>  
+
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Stock Maximo</label>
+                <div class="col-sm-9">
+                  <input type="number" 
+                         class="form-control" 
+                         placeholder="Ingresar Stock Maximo"
+                         formControlName="stockmax">
+                         <span class="form-text text-danger"
+                               *ngIf="tieneError('stockmax')">
+                            Stock Maximo mayor o igual que cero
+                        </span>                         
+                </div>
+            </div>             
+           
+            <div class="row">
+                <div class="col">
+                    <button type="submit"
+                            class="btn btn-primary float-end">
+                        guardar
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <span>Valid</span>
+    <pre>{{miForm.valid}}</pre>
+
+    <!-- <span>Value</span>
+    <pre>{{miForm.value|json}}</pre> -->
+
+    <span>Pristine</span>
+    <pre>{{miForm.pristine}}</pre>        
+    <span>Touched</span>
+    <pre>{{miForm.touched}}</pre>       
+
+    <!-- <span>Custom</span>
+    <pre>{{miForm.controls.stock?.errors| json}}</pre>         -->
+
+</div>               

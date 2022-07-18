@@ -53,7 +53,7 @@ export class PersonasService {
         }
     }    
 
-    buscarProdById(idProd:number): Observable<PersonaLite>{
+    buscarPersById(idProd:number): Observable<PersonaLite>{
         return this.http.get<PersonaLite>(`${this.urlProd}${idProd}`);
     }
 
@@ -63,26 +63,20 @@ export class PersonasService {
                  .subscribe();
     }
 
-    // buscarTipo(idTipoPersona: number)
-    // {
-    //     console.log('Calling WebApi');
+    buscarTipo(idTipoPersona: number)
+    {
+        const params = new HttpParams().set('id', `${idTipoPersona}`);
+        console.log('Calling WebApi');
 
-    //     this.http.get<PersonaViewModel[]>(`${this.urlProd}byId?`, idTipoPersona)
-    //         .subscribe(
-    //             resp => {
-    //                 if(idTipoPersona == 1){
-    //                     this._personas = resp;
-    //                 }
-    //                 else if(idTipoPersona == 2)
-    //                 {
-    //                     this._proveedores = resp;
-    //                 }
-                    
-    //             }
-    //         );
-    //     if (!this._historial.includes(`${idTipoPersona}`)){
-    //         this._historial.push(`${idTipoPersona}`);
-    //         localStorage.setItem('historial',JSON.stringify(this._historial));
-    //     }
-    // }
+         this.http.get<PersonaViewModel[]>(`${this.urlProd}/TipoPersona`, {params})
+            .subscribe(
+                 resp => {
+                    this._personas = resp;  
+                 }
+                );
+         if (!this._historial.includes(`${idTipoPersona}`)){
+             this._historial.push(`${idTipoPersona}`);
+             localStorage.setItem('historial',JSON.stringify(this._historial));
+         }
+     }
 }

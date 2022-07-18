@@ -4,7 +4,7 @@
     <div class="col">
         <form autocomplete="off"
               (ngSubmit)="guardar()"
-              >
+              [formGroup]="miForm">
 
               <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">ID</label>
@@ -215,9 +215,15 @@
     <span>Valid</span>
     <pre>{{miForm.valid}}</pre>
 
+    <span>Value</span>
+    <pre>{{miForm.value | json}}</pre>
+
     <span>Pristine</span>
     <pre>{{miForm.pristine}}</pre>        
     <span>Touched</span>
-    <pre>{{miForm.touched}}</pre>             
+    <pre>{{miForm.touched}}</pre>       
 
-</div>
+    <span>Custom</span>
+    <pre>{{miForm.controls.stock?.errors| json}}</pre>        
+
+</div>  

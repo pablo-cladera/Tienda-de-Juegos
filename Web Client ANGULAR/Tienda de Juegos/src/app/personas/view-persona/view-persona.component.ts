@@ -11,7 +11,9 @@ import { PersonaLite } from '../interfaces/personalite.interface';
   ]
 })
 export class ViewPersonaComponent implements OnInit {
-  persona: PersonaLite = {};
+  persona: PersonaLite = {
+    idTipoPersona: 0
+  };
   constructor( private activatedRoutes: ActivatedRoute,
                private persServices: PersonasService) {
 

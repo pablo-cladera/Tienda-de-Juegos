@@ -1,19 +1,3 @@
-<!-- <h2>Tienda de Juegos</h2>
-<hr>
-<ul class="list-group">
-  <li class="list-group-item"
-      routerLink=""
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true}">
-      Buscar Juego
-  </li>
-  <li class="list-group-item"
-      routerLink="crear-prod"
-      routerLinkActive="active">
-      Nuevo Juego
-  </li>
-</ul> -->
-
 <p>
   <mat-toolbar color="primary">
 
@@ -23,7 +7,6 @@
 
     <h3>JUEGOS: </h3>
     <div class="col-4">
-
       <button mat-button color="basic" routerLink="crear-prod"> <mat-icon>note_add</mat-icon>  Agregar</button>
       <button mat-button [matMenuTriggerFor]="menuSony"><mat-icon>videogame_asset</mat-icon>  SONY</button>
         <mat-menu #menuSony="matMenu">
@@ -43,8 +26,8 @@
     <h3>PERSONAS: </h3>
     <div class="col-4">
       <button mat-button color="basic" routerLink="crear-pers" > <mat-icon>person_add</mat-icon>  Agregar</button>
-      <button mat-button color="basic"> <mat-icon>person</mat-icon>  Clientes</button>
-      <button mat-button color="basic"> <mat-icon>person</mat-icon>  Proveedores</button>
+      <button mat-button color="basic" routerLink="mostrar-clientes"> <mat-icon>person</mat-icon>  Clientes</button>
+      <button mat-button color="basic" routerLink="mostrar-proveedores"> <mat-icon>person</mat-icon>  Proveedores</button>
     </div>
 
   </mat-toolbar>

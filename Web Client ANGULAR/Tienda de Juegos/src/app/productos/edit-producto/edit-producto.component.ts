@@ -4,12 +4,12 @@ import { ProductoCreate } from '../interfaces/productocreate.interface';
 import { ProductosService } from '../services/productos.service';
 
 @Component({
-  selector: 'app-create-producto',
-  templateUrl: './create-producto.component.html',
-  styles: []
+  selector: 'app-edit-producto',
+  templateUrl: './edit-producto.component.html',
+  styles: [
+  ]
 })
-
-export class CreateProductoComponent implements OnInit {
+export class EditProductoComponent implements OnInit {
   miForm = this.formBuilder.group(
     {
       id: [, [Validators.required, Validators.minLength(1)] ],
@@ -66,7 +66,7 @@ export class CreateProductoComponent implements OnInit {
       stockMax: this.miForm.controls['stockmax'].value,
     }
 
-    this.productoService.crear(newJuego);
+    this.productoService.upload(newJuego);
 
     this.miForm.reset(
       {
