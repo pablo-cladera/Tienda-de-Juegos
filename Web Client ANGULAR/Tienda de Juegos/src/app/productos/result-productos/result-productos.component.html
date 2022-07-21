@@ -1,5 +1,5 @@
-<table *ngIf="resultados.length > 0" class="animate__animated animate__fadeIn table table-hover">
-    <thead>
+<table *ngIf="resultados.length > 0"  class="animate__animated animate__fadeIn table table-hover">
+    <thead class="thead-dark">
         <tr>
             <th>
                 #
@@ -24,6 +24,7 @@
     <tbody>
         <tr *ngFor="let prod of resultados; let i = index">
             <td>
+                <!-- {{prod.id}} -->
                 {{i + 1}}
             </td>
             <td>
@@ -40,8 +41,8 @@
             </td>
 
             <td>
-                <button (click)="eliminar(prod)" class="btn btn-danger" #txtEliminar>Eliminar</button>
-                <button routerLink="edit-prod/{{i+1}}" class="btn btn-primary">Editar</button>
+                <button mat-menu-item (click)="eliminarJuego(prod.id)" class="btn btn-danger">  Eliminar</button>
+                <button mat-menu-item routerLink="edit-prod/{{i+1}}" class="btn btn-primary">Editar</button>
             </td>                                                           
         </tr>
     </tbody>            

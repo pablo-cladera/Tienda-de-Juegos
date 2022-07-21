@@ -18,14 +18,25 @@ export class ViewProductoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activatedRoutes.params
-      .pipe(
-        switchMap(
-          ({idprod}) => this.productoServices.buscarProdById(idprod))
-        )
-        .subscribe(resp => {
-          this.producto = resp;
-        });
-  }
+     this.activatedRoutes.params
+       .pipe(
+         switchMap(
+           ({idprod}) => this.productoServices.buscarProdById(idprod))
+         )
+         .subscribe(resp => {
+           this.producto = resp;
+         });
+   }
+
+  // ngOnInit(): void {
+  //   this.activatedRoutes.params
+  //     .pipe(
+  //       switchMap(
+  //         ({idTipoPersona}) => this.productoServices.buscarProdByConsola(idTipoPersona))
+  //       )
+  //       .subscribe(resp => {
+  //         this.producto = resp;
+  //       });
+  // }
 
 }

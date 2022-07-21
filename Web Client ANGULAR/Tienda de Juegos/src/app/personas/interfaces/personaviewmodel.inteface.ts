@@ -10,7 +10,7 @@ export interface PersonaViewModel
     telefono:        string;
     email:           string;
     calle:           string;
-    numeroCalle:     number;
-    ciudad:          string;
+    numeroCalle:     string;
+    idCiudad:        number;
     codigoPostal:    string;
 }

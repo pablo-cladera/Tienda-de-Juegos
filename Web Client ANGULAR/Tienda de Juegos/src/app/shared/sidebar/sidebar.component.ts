@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 //import { ProductosService } from 'src/app/productos/services/productos.service';
+import { ProductosService } from 'src/app/productos/services/productos.service';
+import { MostrarProductosComponent } from 'src/app/productos/mostrar-producto/mostrar-productos.component';
 
 
 
@@ -9,10 +11,20 @@ import { Component } from '@angular/core';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
+
 export class SidebarComponent  {
 
+  // constructor(private mostrarService:MostrarProductosComponent){
 
+  // }
+
+  // buscarConsola(id:string)
+  // {
+  //   console.log();
+  //   this.mostrarService.buscarByConsola(id)
+  // }
 
 }
+
 
 

@@ -1,0 +1,49 @@
+<table *ngIf="resultados.length > 0" class="animate__animated animate__fadeIn table table-hover">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Genero
+            </th>            
+            <th>
+                Consola
+            </th>
+            <th>
+                Stock
+            </th>         
+            <th>
+                Acciones
+            </th>                                                           
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let prod of resultados; let i = index">
+            <td>
+                {{i + 1}}
+            </td>
+            
+            <td>
+                {{prod.nombre}}
+            </td>
+            <td>
+                {{prod.genero}}
+            </td>
+            <td>
+                {{prod.consola}}
+            </td>          
+            <td>
+                {{prod.stock}}
+            </td>
+
+            <td>
+                <!-- <button (click)="eliminar(prod)" class="btn btn-danger" #txtEliminar>Eliminar</button>
+                <button routerLink="edit-prod/{{i+1}}" class="btn btn-primary">Editar</button> -->
+            </td>                                                           
+        </tr>
+    </tbody>            
+</table>

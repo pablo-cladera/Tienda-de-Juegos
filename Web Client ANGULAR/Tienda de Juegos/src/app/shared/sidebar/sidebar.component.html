@@ -10,7 +10,8 @@
       <button mat-button color="basic" routerLink="crear-prod"> <mat-icon>note_add</mat-icon>  Agregar</button>
       <button mat-button [matMenuTriggerFor]="menuSony"><mat-icon>videogame_asset</mat-icon>  SONY</button>
         <mat-menu #menuSony="matMenu">
-          <button mat-menu-item>Play Station 5</button>
+          <!-- <button mat-menu-item value="1" color="basic" (click)="buscarConsola('1')">Play Station 5</button> -->
+          <button mat-menu-item value="1" color="basic" routerLink="mostrar-prod" #txtMostrar>Play Station 5</button>
           <button mat-menu-item>Play Station 4</button>
           <button mat-menu-item>Play Station 3</button>
         </mat-menu>
@@ -25,7 +26,7 @@
 
     <h3>PERSONAS: </h3>
     <div class="col-4">
-      <button mat-button color="basic" routerLink="crear-pers" > <mat-icon>person_add</mat-icon>  Agregar</button>
+      <button mat-button color="basic" routerLink="create-persona"> <mat-icon>person_add</mat-icon>  Agregar</button>
       <button mat-button color="basic" routerLink="mostrar-clientes"> <mat-icon>person</mat-icon>  Clientes</button>
       <button mat-button color="basic" routerLink="mostrar-proveedores"> <mat-icon>person</mat-icon>  Proveedores</button>
     </div>
@@ -33,5 +34,6 @@
   </mat-toolbar>
 
   <router-outlet></router-outlet>
+  
 </p>
 

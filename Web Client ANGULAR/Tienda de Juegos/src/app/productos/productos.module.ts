@@ -10,6 +10,8 @@ import { CreateProductoComponent } from './create-producto/create-producto.compo
 import { ViewProductoComponent } from './view-producto/view-producto.component';
 import { EditProductoComponent } from './edit-producto/edit-producto.component';
 
+import { MaterialModule } from '../material.module';
+
 @NgModule({
   declarations: [
     ResultProductosComponent, 
@@ -21,7 +23,8 @@ import { EditProductoComponent } from './edit-producto/edit-producto.component';
   imports: [
     CommonModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule
   ],
   exports: [
     MainProductosComponent,

@@ -21,6 +21,13 @@ export class SearchProductosComponent  {
     this.prodService.buscarProdByName(value);
     this.txtBuscar.nativeElement.value = '';
   }
+
+  buscarConsola (){
+    const value = this.txtBuscar.nativeElement.value;
+    if (value.trim()==='') return;
+    this.prodService.buscarProdByConsola(value);
+    this.txtBuscar.nativeElement.value = '';
+  }
  
   
 }

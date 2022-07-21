@@ -1,4 +1,4 @@
-<h2>Nueva Persona:  </h2>
+<h2>Nueva Persona:</h2>
 <hr>
 <div class="row">
     <div class="col">
@@ -7,12 +7,13 @@
               [formGroup]="miForm">
 
               <div class="mb-3 row">
-                <label class="col-sm-3 col-form-label">ID</label>
+                <label class="col-sm-3 col-form-label">ID Persona</label>
                 <div class="col-sm-9">
                   <input type="number" 
                          class="form-control" 
-                         placeholder="ID"
-                         formControlName="id">
+                         placeholder="ID de la Persona"
+                         formControlName="id"
+                         >
                          <span class="form-text text-danger"
                                *ngIf="tieneError('id')">
                             Ingrese ID
@@ -51,58 +52,67 @@
                 </div> 
 
                 <div class="mb-3 row">
-                    <label class="col-sm-3 col-form-label">ID Tipo Persona</label>
+                    <label class="col-sm-3 col-form-label">Tipo Persona</label>
                     <div class="col-sm-9">
-                      <input type="number" 
-                             class="form-control" 
-                             placeholder="ID"
-                             formControlName="idTipoPersona">
-                             <span class="form-text text-danger"
-                                   *ngIf="tieneError('idTipoPersona')">
-                                Ingrese ID
-                             </span>                         
+                        <select name="dropdown" 
+                        class="form-control"
+                        formControlName="idTipoPersona">
+                       <option value="1">Cliente</option>
+                       <option value="2">Proveedor</option>
+                   </select>
+                        <span class="form-text text-danger"
+                            *ngIf="tieneError('idTipoPersona')">
+                        Seleccione un Tipo
+                        </span>                         
                     </div>
                     </div>
 
                 
                     <div class="mb-3 row">
-                        <label class="col-sm-3 col-form-label">ID Tipo Documento</label>
+                        <label class="col-sm-3 col-form-label">Tipo Documento</label>
                         <div class="col-sm-9">
-                          <input type="number" 
-                                 class="form-control" 
-                                 placeholder="ID"
-                                 formControlName="idTipoDocumento">
-                                 <span class="form-text text-danger"
-                                       *ngIf="tieneError('idTipoDocumento')">
-                                    Ingrese ID
-                                 </span>                         
+                            <select name="dropdown" 
+                            class="form-control"
+                            formControlName="idTipoDocumento">
+                            <option value="1">DNI</option>
+                            <option value="2">LE</option>
+                            <option value="3">LC</option>
+                            </select>
+                            <span class="form-text text-danger"
+                                *ngIf="tieneError('idTipoDocumento')">
+                                Seleccione un Tipo
+                            </span>                         
                         </div>
                         </div>
 
               <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">Ingresar Documento</label>
                 <div class="col-sm-9">
-                  <input type="number" 
+                  <input type="text" 
                          class="form-control" 
-                         placeholder="DNI sin puntos"
-                         formControlName="documento">
+                         placeholder="Documento sin puntos"
+                         formControlName="documento"
+                         >
                          <span class="form-text text-danger"
                                *ngIf="tieneError('documento')">
-                            Ingrese DNI sin puntos
+                            Ingrese DNI valido y sin puntos
                          </span>                         
                 </div>
                 </div>
 
                 <div class="mb-3 row">
-                    <label class="col-sm-3 col-form-label">ID Tipo Telefono</label>
+                    <label class="col-sm-3 col-form-label">Tipo Telefono</label>
                     <div class="col-sm-9">
-                      <input type="number" 
-                             class="form-control" 
-                             placeholder="ID"
-                             formControlName="idTipoTelefono">
+                        <select name="dropdown" 
+                        class="form-control"
+                        formControlName="idTipoTelefono">
+                        <option value="1">Celular</option>
+                        <option value="2">Casa</option>
+                        <option value="3">Trabajo</option>
+                        </select>
                              <span class="form-text text-danger"
                                    *ngIf="tieneError('idTipoTelefono')">
-                                Ingrese ID
+                                Seleccione un Tipo
                              </span>                         
                     </div>
                     </div>
@@ -114,7 +124,8 @@
                     <input type="text" 
                             class="form-control" 
                             placeholder="Telefono de la Persona"
-                            formControlName="telefono">
+                            formControlName="telefono"
+                            >
                             <span class="form-text text-danger"
                                 *ngIf="tieneError('telefono')">
                                 Minimo 3 letras
@@ -123,15 +134,15 @@
                 </div>  
 
                 <div class="mb-3 row">
-                    <label class="col-sm-3 col-form-label">eMail</label>
+                    <label class="col-sm-3 col-form-label">E-Mail</label>
                     <div class="col-sm-9">
                     <input type="text" 
                             class="form-control" 
-                            placeholder="Emailo de la Persona"
+                            placeholder="Email de la Persona"
                             formControlName="email">
                             <span class="form-text text-danger"
                                 *ngIf="tieneError('email')">
-                                Minimo 3 letras
+                                ingrese un correo valido
                             </span>
                     </div>
                 </div>
@@ -154,10 +165,11 @@
                 <div class="mb-3 row">
                     <label class="col-sm-3 col-form-label">Numero Calle</label>
                     <div class="col-sm-9">
-                    <input type="number" 
+                    <input type="text" 
                             class="form-control" 
                             placeholder="Numero de la Calle en la que vive la Persona"
-                            formControlName="numeroCalle">
+                            formControlName="numeroCalle"
+                            >
                             <span class="form-text text-danger"
                                 *ngIf="tieneError('numeroCalle')">
                                 Ingrese DNI sin puntos
@@ -169,15 +181,20 @@
                 <div class="mb-3 row">
                     <label class="col-sm-3 col-form-label">ID Ciudad</label>
                     <div class="col-sm-9">
-                    <input type="text" 
-                            class="form-control" 
-                            placeholder="ID de la Ciudad en la que vive la Persona"
-                            formControlName="ciudad"
-                            >
+                        <select name="dropdown" 
+                        class="form-control"
+                        formControlName="idCiudad">
+                        <option value="1">Concepcion del Uruguay</option>
+                        <option value="2">Pronunciamiento</option>
+                        <option value="3">Colon</option>
+                        <option value="4">San Jose</option>
+                        <option value="5">Villa Elisa</option>
+                        <option value="6">Gualeguaychu</option>
+                        </select>
                             <span class="form-text text-danger"
-                                *ngIf="tieneError('ciudad')">
-                                Minimo 3 letras
-                            </span>
+                                *ngIf="tieneError('idCiudad')">
+                                Ingrese un ID
+                            </span>                         
                     </div>
                 </div> 
                 
@@ -188,7 +205,7 @@
                     <div class="col-sm-9">
                     <input type="text" 
                             class="form-control" 
-                            placeholder="Apellido de la Persona"
+                            placeholder="Codigo Postal de la Persona"
                             formControlName="codigoPostal"
                             >
                             <span class="form-text text-danger"
@@ -199,14 +216,15 @@
                 </div>  
 
            
-            <div class="row">
-                <div class="col">
-                    <button type="submit"
-                            class="btn btn-primary float-end">
-                        guardar
-                    </button>
+                <div class="row">
+                    <div class="col">
+                        <button type="submit"
+                                class="btn btn-primary float-end">
+                            guardar
+                        </button>
+                    </div>
                 </div>
-            </div>
+                
         </form>
     </div>
 </div>
@@ -224,6 +242,6 @@
     <pre>{{miForm.touched}}</pre>       
 
     <span>Custom</span>
-    <pre>{{miForm.controls.stock?.errors| json}}</pre>        
+    <pre>{{miForm.controls.calle?.errors| json}}</pre>        
 
-</div>  
+</div>

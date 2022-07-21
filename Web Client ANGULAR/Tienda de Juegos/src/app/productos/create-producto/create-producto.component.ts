@@ -6,7 +6,7 @@ import { ProductosService } from '../services/productos.service';
 @Component({
   selector: 'app-create-producto',
   templateUrl: './create-producto.component.html',
-  styles: []
+  styleUrls: ['./create-producto.component.scss']
 })
 
 export class CreateProductoComponent implements OnInit {

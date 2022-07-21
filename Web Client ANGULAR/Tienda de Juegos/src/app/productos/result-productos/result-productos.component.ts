@@ -1,7 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ProductosService } from '../services/productos.service';
-import { MaterialModule } from 'src/app/material.module';
-import { JuegoViewModel } from '../interfaces/productviewmodel.interface';
+import Swal from 'sweetalert2';
+import { ProductosModule } from '../productos.module';
+
+
+
 
 @Component({
   selector: 'app-result-productos',
@@ -9,26 +12,42 @@ import { JuegoViewModel } from '../interfaces/productviewmodel.interface';
   styles: [
   ]
 })
-export class ResultProductosComponent {
 
-  @ViewChild("txtEliminar") txtEliminar!:ElementRef<HTMLInputElement>;
 
-  // constructor(private prodService:ProductosService){
+export class ResultProductosComponent  {
 
-  // }
-  get resultados() {
-     return this.prodsService.todosProductos;
-     
+  constructor(private prodsService: ProductosService) { }
+
+  get resultados() 
+  {
+     return this.prodsService.todosProductos;  
   }
-    eliminar (juego: JuegoViewModel) {
-    const Nueva = this.txtEliminar.nativeElement.valueAsNumber;
-    if (juego === null) return;
-    this.prodsService.eliminarService(juego.id);
-    this.txtEliminar.nativeElement.value = '';
-    
- }
-
-   constructor(private prodsService: ProductosService) { 
+ 
+   eliminarJuego(id: number)
+   {
+    Swal.fire({
+      title: 'Quiere Eliminar el juego?',
+      text: "Si lo eliminas no podras revertir el cambio",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, Eliminar!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log(`Nro de id a eliminar:${id}`);
+        this.prodsService.eliminarJuegoService(id)
+        .subscribe();
+        Swal.fire(
+          'Eliminado!',
+          'El juego ha sido eliminado.',
+          'success'
+        )
+      }
+    })
+      // console.log(`Nro de id a eliminar:${id}`);
+      // this.prodsService.eliminarJuegoService(id)
+      // .subscribe();
    }
-
+   
 }

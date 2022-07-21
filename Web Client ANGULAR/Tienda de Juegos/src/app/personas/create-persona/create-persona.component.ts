@@ -6,14 +6,13 @@ import { PersonasService } from '../services/personas.service';
 @Component({
   selector: 'app-create-persona',
   templateUrl: './create-persona.component.html',
-  styles: []
+  styles: [ './create-persona.component.scss' ]
 })
 
-export class CreatePersonaComponent implements OnInit
- {
+export class CreatePersonaComponent implements OnInit {
   miForm = this.formBuilder.group(
     {
-      id: [, [Validators.required, Validators.min(1)]],
+      id: [, [Validators.required, Validators.minLength(1)]],
       nombre: [, [Validators.required, Validators.minLength(3)]],
       apellido: [, [Validators.required, Validators.minLength(3)]],
       idTipoPersona: [, [Validators.required, Validators.minLength(1)]],
@@ -22,15 +21,15 @@ export class CreatePersonaComponent implements OnInit
       idTipoTelefono: [, [Validators.required, Validators.minLength(1)]],
       telefono: [, [Validators.required, Validators.minLength(6)]],
       email: [, [Validators.required, Validators.minLength(5)]],
-      calle: [, [Validators.required, Validators.minLength(3)]],
+      calle: [, [Validators.required, Validators.minLength(1)]],
       numeroCalle: [, [Validators.required, Validators.minLength(1)]],
-      ciudad: [, [Validators.required, Validators.minLength(3)]],
+      idCiudad: [, [Validators.required, Validators.minLength(1)]],
       codigoPostal: [, [Validators.required, Validators.minLength(4)]]
     }
   )
 
   constructor(private formBuilder: FormBuilder,
-              private personaService: PersonasService) { }
+              private personasService: PersonasService) { }
 
   ngOnInit(): void {
     const ran = 5;
@@ -56,8 +55,7 @@ export class CreatePersonaComponent implements OnInit
 
     console.log('guardando persona');
 
-    const newPersona: PersonaCreate = 
-    {
+    const newPersona: PersonaCreate = {
       id: this.miForm.controls['id'].value,
       nombre: this.miForm.controls['nombre'].value,
       apellido: this.miForm.controls['apellido'].value,
@@ -69,12 +67,11 @@ export class CreatePersonaComponent implements OnInit
       email: this.miForm.controls['email'].value,
       calle: this.miForm.controls['calle'].value,
       numeroCalle: this.miForm.controls['numeroCalle'].value,
-      ciudad: this.miForm.controls['ciudad'].value,
-      codigoPostal: this.miForm.controls['codigoPostal'].value,
-      
+      idCiudad: this.miForm.controls['idCiudad'].value,
+      codigoPostal: this.miForm.controls['codigoPostal'].value 
     }
 
-    this.personaService.crear(newPersona);
+    this.personasService.crear(newPersona);
 
     this.miForm.reset(
       {

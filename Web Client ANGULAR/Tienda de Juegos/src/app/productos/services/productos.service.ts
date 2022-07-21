@@ -12,9 +12,7 @@ export class ProductosService {
     private _productos: JuegoViewModel[] = [];
     private _historial: string[] = [];
     // private _producto: ProductoLite = {
-    //     id: '',
-    //     nombre: ''
-    // }; 
+
 
     urlProd:string = environment.apiUri + "/Juegos/";
     get todosProductos() {
@@ -24,6 +22,9 @@ export class ProductosService {
     get historial() {
         return [...this._historial];
     }    
+    getPosts(){
+        return this.http.get(this.urlProd);
+      }
 
     // get producto() {
     //     return this._producto;
@@ -60,6 +61,21 @@ export class ProductosService {
         }
     }    
 
+    buscarProdByConsola(argumento:string){
+        const params = new HttpParams().set('idConsola',argumento); 
+ 
+        this.http.get<JuegoViewModel[]>(`${this.urlProd}byConsola?`, {params})
+            .subscribe(
+                resp => {
+                    this._productos = resp;
+                }
+            );
+        if (!this._historial.includes(argumento)){
+            this._historial.push(argumento);
+            localStorage.setItem('historial',JSON.stringify(this._historial));
+        }
+    } 
+
     buscarProdById(idProd:number): Observable<ProductoLite>{
         return this.http.get<ProductoLite>(`${this.urlProd}${idProd}`);
     }
@@ -68,17 +84,16 @@ export class ProductosService {
         console.log('Calling WebApi');
         this.http.put(`${this.urlProd}create`, nuevoProd)
                  .subscribe();
-    }
+    } 
 
-    eliminarService(argumento: number) {
-        console.log('Calling WebApi');
-        this.http.put(`${this.urlProd}delete`,argumento)
-                 .subscribe();
-    }
+    eliminarJuegoService(Id: number): Observable<JuegoViewModel>{
+        console.log(`Calling WebApi`);
+        return this.http.delete<JuegoViewModel>(`${this.urlProd}${Id}`);
+      }
 
     upload(nuevoProd: ProductoCreate) {
         console.log('Calling WebApi');
-        this.http.put(`${this.urlProd}upload`, nuevoProd)
+        this.http.put(`${this.urlProd}update`, nuevoProd)
                  .subscribe();
     }
 

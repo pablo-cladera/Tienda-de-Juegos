@@ -1,22 +1,24 @@
-
 <h2>Editar Juego:  </h2>
 <hr>
 <div class="row">
     <div class="col">
+        
         <form autocomplete="on"
               (ngSubmit)="guardar()"
               [formGroup]="miForm">
               
               <div class="mb-3 row">
-                <label class="col-sm-3 col-form-label">Id</label>
-                <div class="col-sm-9">
-                  <input type="text" 
-                         class="form-control" 
-                         placeholder="Ingresar ID"
-                         formControlName = "id" 
-                         >
-                </div>
-            </div>              
+                <label class="col-sm-3 col-form-label"> ID</label>
+                    <div class="col-sm-9">
+                        <input type="text" 
+                                class="form-control" 
+                                placeholder="Ingresar ID"
+                                formControlName = "id" 
+                                >
+                    </div>
+               </div>    
+               
+               
 
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">Nombre Juego</label>
@@ -75,10 +77,10 @@
                     <select name="dropdown" 
                          class="form-control"
                          formControlName="idDesarrolladores">
-                        <option value="0" selected></option>
+                        
                         <option value="1">EA SPORT</option>
-                        <option value="2">des 2</option>
-                        <option value="3">des 3</option>
+                        <option value="2">Activision</option>
+                        <option value="3">Blizzard</option>
                     </select>                         
                     <span class="form-text text-danger"
                           *ngIf="tieneError('idDesarrolladores')">

@@ -1,4 +1,4 @@
-<h2>Nuevo Juego:  </h2>
+<h2>Nuevo Juego</h2>
 <hr>
 <div class="row">
     <div class="col">
@@ -56,10 +56,13 @@
                     <select name="dropdown" 
                          class="form-control"
                          formControlName="idConsola">
-                        <option value="0" selected></option>
+                        
                         <option value="1">PS5</option>
                         <option value="2">PS4</option>
                         <option value="3">PS3</option>
+                        <option value="4">Xbox Series</option>
+                        <option value="5">Xbox One</option>
+                        <option value="6">Xbox 360</option>
                     </select>                         
                     <span class="form-text text-danger"
                           *ngIf="tieneError('idConsola')">
@@ -74,10 +77,14 @@
                     <select name="dropdown" 
                          class="form-control"
                          formControlName="idDesarrolladores">
-                        <option value="0" selected></option>
+                        
                         <option value="1">EA SPORT</option>
-                        <option value="2">des 2</option>
-                        <option value="3">des 3</option>
+                        <option value="2">Activision</option>
+                        <option value="3">Blizzard</option>
+                        <option value="4">Infinity Ward</option>
+                        <option value="5">Raven</option>
+                        <option value="6">Naughty Dog</option>
+                        
                     </select>                         
                     <span class="form-text text-danger"
                           *ngIf="tieneError('idDesarrolladores')">
