@@ -1,35 +1,51 @@
 <p>
   <mat-toolbar color="primary">
-
-    <div class="col-2">
+    
       <button mat-button color="basic" routerLink="**"> <mat-icon>home</mat-icon>  GAME STORE</button>
-    </div>
 
-    <h3>JUEGOS: </h3>
-    <div class="col-4">
-      <button mat-button color="basic" routerLink="crear-prod"> <mat-icon>note_add</mat-icon>  Agregar</button>
-      <button mat-button [matMenuTriggerFor]="menuSony"><mat-icon>videogame_asset</mat-icon>  SONY</button>
-        <mat-menu #menuSony="matMenu">
-          <!-- <button mat-menu-item value="1" color="basic" (click)="buscarConsola('1')">Play Station 5</button> -->
-          <button mat-menu-item value="1" color="basic" routerLink="mostrar-prod" #txtMostrar>Play Station 5</button>
-          <button mat-menu-item>Play Station 4</button>
-          <button mat-menu-item>Play Station 3</button>
-        </mat-menu>
+      <button mat-button color="basic" [matMenuTriggerFor]="menuJuegos"> JUEGOS </button>
 
-        <button mat-button [matMenuTriggerFor]="menuMicrosoft"><mat-icon>games</mat-icon>  Microsoft</button>
+      <mat-menu #menuJuegos="matMenu">
+        <button mat-menu-item color="basic"> <mat-icon>view_headline</mat-icon> Mostrar Todo</button>
+        <button mat-menu-item color="basic" routerLink="crear-prod"> <mat-icon>note_add</mat-icon> Agregar</button>
+        <button mat-menu-item [matMenuTriggerFor]="menuSony"><mat-icon>videogame_asset</mat-icon> SONY</button>
+        <button mat-menu-item [matMenuTriggerFor]="menuMicrosoft"><mat-icon>games</mat-icon>  Microsoft</button>
+      </mat-menu>
+
+      <mat-menu #menuSony="matMenu">
+            <!-- <button mat-menu-item value="1" color="basic" (click)="buscarConsola('1')">Play Station 5</button> -->
+        <button mat-menu-item value="1" color="basic" routerLink="mostrar-prod" #txtMostrar> Play Station 5</button>
+        <button mat-menu-item value="2">Play Station 4</button>
+        <button mat-menu-item value="3">Play Station 3</button>
+      </mat-menu>
+   
+        
         <mat-menu #menuMicrosoft="matMenu">
           <button mat-menu-item>XBox Serie</button>
           <button mat-menu-item>XBox One</button>
           <button mat-menu-item>XBox 360</button>
         </mat-menu>
-    </div>
 
-    <h3>PERSONAS: </h3>
-    <div class="col-4">
-      <button mat-button color="basic" routerLink="create-persona"> <mat-icon>person_add</mat-icon>  Agregar</button>
-      <button mat-button color="basic" routerLink="mostrar-clientes"> <mat-icon>person</mat-icon>  Clientes</button>
-      <button mat-button color="basic" routerLink="mostrar-proveedores"> <mat-icon>person</mat-icon>  Proveedores</button>
-    </div>
+        <button mat-button color="basic" [matMenuTriggerFor]="menuPersonas"> PERSONAS </button>
+        <mat-menu #menuPersonas="matMenu">
+          <button mat-menu-item color="basic" routerLink="create-persona"> <mat-icon>view_headline</mat-icon>Mostrar Todo</button>
+          <button mat-menu-item color="basic" routerLink="create-persona"> <mat-icon>person_add</mat-icon>Agregar</button>
+          <button mat-menu-item color="basic" routerLink="mostrar-clientes"> <mat-icon>person</mat-icon>Clientes</button>
+          <button mat-menu-item color="basic" routerLink="mostrar-proveedores"> <mat-icon>person</mat-icon>Proveedores</button>
+        </mat-menu>
+
+        <button mat-button color="basic" [matMenuTriggerFor]="menuCompras"> COMPRAS </button>
+        <mat-menu #menuCompras="matMenu">
+          <button mat-menu-item color="basic" routerLink=""> <mat-icon>add_shopping_cart</mat-icon>Agregar Compra</button>
+          <button mat-menu-item color="basic" routerLink=""> <mat-icon>shopping_cart</mat-icon>Detalles</button>
+        </mat-menu>
+
+        <button mat-button color="basic" [matMenuTriggerFor]="menuCompras"> VENTAS </button>
+        <mat-menu #menuCompras="matMenu">
+          <button mat-menu-item color="basic" routerLink=""> <mat-icon>add_shopping_cart</mat-icon>Agregar Venta</button>
+          <button mat-menu-item color="basic" routerLink=""> <mat-icon>credit_card</mat-icon>Detalles</button>
+        </mat-menu>
+    
 
   </mat-toolbar>
 
