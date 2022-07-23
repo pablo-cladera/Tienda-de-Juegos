@@ -34,16 +34,16 @@
           <button mat-menu-item color="basic" routerLink="mostrar-proveedores"> <mat-icon>person</mat-icon>Proveedores</button>
         </mat-menu>
 
+        <button mat-button color="basic" [matMenuTriggerFor]="menuVentas">VENTAS </button>
+        <mat-menu #menuVentas="matMenu">
+          <button mat-menu-item color="basic" routerLink=""> <mat-icon>attach_money</mat-icon>Agregar Venta </button>
+          <button mat-menu-item color="basic" routerLink=""> <mat-icon>format_list_bulleted</mat-icon>Listado de Ventas</button>
+        </mat-menu>
+
         <button mat-button color="basic" [matMenuTriggerFor]="menuCompras"> COMPRAS </button>
         <mat-menu #menuCompras="matMenu">
           <button mat-menu-item color="basic" routerLink=""> <mat-icon>add_shopping_cart</mat-icon>Agregar Compra</button>
-          <button mat-menu-item color="basic" routerLink=""> <mat-icon>shopping_cart</mat-icon>Detalles</button>
-        </mat-menu>
-
-        <button mat-button color="basic" [matMenuTriggerFor]="menuCompras"> VENTAS </button>
-        <mat-menu #menuCompras="matMenu">
-          <button mat-menu-item color="basic" routerLink=""> <mat-icon>add_shopping_cart</mat-icon>Agregar Venta</button>
-          <button mat-menu-item color="basic" routerLink=""> <mat-icon>credit_card</mat-icon>Detalles</button>
+          <button mat-menu-item color="basic" routerLink=""> <mat-icon>format_list_bulleted</mat-icon>Listado de Compras</button>
         </mat-menu>
     
 

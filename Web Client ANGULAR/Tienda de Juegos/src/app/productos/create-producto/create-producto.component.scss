@@ -6,3 +6,18 @@ h2 {
     text-transform: uppercase;
     text-align: center;
   }
+
+  .example-card {
+    max-width: 500px;
+  }
+
+  .main{
+    //height: 100vh;
+    display: flex;
+    justify-content: center;
+    // align-items: center;
+  }
+  mat-card-actions{
+    display: flex;
+    justify-content: center;
+  }

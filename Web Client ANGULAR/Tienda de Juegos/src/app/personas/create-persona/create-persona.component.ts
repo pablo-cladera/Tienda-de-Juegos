@@ -6,7 +6,7 @@ import { PersonasService } from '../services/personas.service';
 @Component({
   selector: 'app-create-persona',
   templateUrl: './create-persona.component.html',
-  styles: [ './create-persona.component.scss' ]
+  styleUrls: [ './create-persona.component.scss' ]
 })
 
 export class CreatePersonaComponent implements OnInit {

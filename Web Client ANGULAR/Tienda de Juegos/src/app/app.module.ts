@@ -30,7 +30,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     CommonModule,
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
     
   ],
   providers: [],

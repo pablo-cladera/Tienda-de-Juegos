@@ -27,10 +27,11 @@ import { MaterialModule } from '../material.module';
     MaterialModule
   ],
   exports: [
-    MainProductosComponent,
-    CreateProductoComponent, 
-    ViewProductoComponent,
-    EditProductoComponent
+
+    // MainProductosComponent,
+    // CreateProductoComponent, 
+    // ViewProductoComponent,
+    // EditProductoComponent
   ],
   providers: [
     ProductosService
