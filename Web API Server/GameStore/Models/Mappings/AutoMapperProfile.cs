@@ -13,7 +13,7 @@ namespace GameStore.Models.Mappings
         public AutoMapperProfile ()
         {
             CreateMap<Juego, JuegoViewModel>()
-                //.ForMember(x => x.Id, opt => opt.MapFrom(o => o.Id))
+                .ForMember(x => x.Id, opt => opt.MapFrom(o => o.Id))
                 .ForMember(x => x.Nombre, opt => opt.MapFrom(o => o.Nombre))
                 .ForMember(x => x.Genero, opt => opt.MapFrom(o => o.IdGeneroNavigation.Nombre))
                 .ForMember(x => x.Consola, opt => opt.MapFrom(o => o.IdConsolaNavigation.Nombre))

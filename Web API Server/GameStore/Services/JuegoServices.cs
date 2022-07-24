@@ -71,7 +71,7 @@ namespace GameStore.Services
 
             if(juego != null)
             {
-                juego.Id = data.id;
+                //juego.Id = data.id;
                 juego.Nombre = data.Nombre;
                 juego.IdGenero = data.IdGenero;
                 juego.IdConsola = data.IdConsola;
