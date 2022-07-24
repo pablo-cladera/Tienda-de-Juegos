@@ -6,17 +6,17 @@ using System.Collections.Generic;
 
 namespace GameStore.Models
 {
-    public partial class Proveedor
+    public partial class Cliente
     {
-        public Proveedor()
+        public Cliente()
         {
-            Compra = new HashSet<Compra>();
+            Venta = new HashSet<Venta>();
         }
 
         public decimal Id { get; set; }
         public decimal IdPersona { get; set; }
 
         public virtual Persona IdPersonaNavigation { get; set; }
-        public virtual ICollection<Compra> Compra { get; set; }
+        public virtual ICollection<Venta> Venta { get; set; }
     }
 }

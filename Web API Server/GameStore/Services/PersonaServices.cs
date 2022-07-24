@@ -65,7 +65,7 @@ namespace GameStore.Services
 
             if (persona != null)
             {
-                persona.Id = data.Id;
+                //persona.Id = data.Id;
                 persona.Nombre = data.Nombre;
                 persona.Apellido = data.Apellido;
                 persona.IdTipoPersona = data.IdTipoPersona;
@@ -89,7 +89,7 @@ namespace GameStore.Services
         {
             var persona = new Persona()
             {
-                Id = data.Id,
+                //Id = data.Id,
                 Nombre = data.Nombre,
                 Apellido = data.Apellido,
                 IdTipoPersona = data.IdTipoPersona,

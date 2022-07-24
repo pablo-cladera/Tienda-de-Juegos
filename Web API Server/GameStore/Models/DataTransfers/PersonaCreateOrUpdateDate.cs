@@ -2,8 +2,10 @@
 {
     public class PersonaCreateOrUpdateDate
     {
-            public decimal Id { get; set; }
-            public string? Nombre { get; set; }
+        internal readonly decimal Id;
+
+        //public decimal Id { get; set; }
+        public string? Nombre { get; set; }
             public string? Apellido { get; set; }
             public decimal IdTipoPersona { get; set; }
             public decimal IdTipoDocumento { get; set; }
