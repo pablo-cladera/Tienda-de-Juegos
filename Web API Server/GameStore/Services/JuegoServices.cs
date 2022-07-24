@@ -24,10 +24,11 @@ namespace GameStore.Services
             //return _context.Juego.ToList();
         }
 
-        public IEnumerable<Juego> GetByConsola(decimal tipoConsola)
+        public IEnumerable<Juego> GetByConsola(string tipoConsola)
+            //public IEnumerable<Juego> GetByConsola(decimal tipoConsola)
         {
-            return _context.Juego.Where(x => x.IdConsola == tipoConsola)
-            //return _context.Persona.Where(x => EF.Functions.Like(x.IdTipoPersonaNavigation.Nombre, $"%{TipoPersona}%"))
+            return _context.Juego.Where(x => x.IdConsolaNavigation.Nombre == tipoConsola)
+                //return _context.Juego.Where(x => x.IdConsola == tipoConsola)
                                    .Include(c => c.IdGeneroNavigation)
                                    .Include(c => c.IdConsolaNavigation)
                                    .ToList();
@@ -66,11 +67,11 @@ namespace GameStore.Services
 
         public Juego UpdateJuego(JuegoCreateOrUpdateDate data)
         {
-            var juego = GetOne(data.Id);
+            var juego = GetOne(data.id);
 
             if(juego != null)
             {
-                juego.Id = data.Id;
+                juego.Id = data.id;
                 juego.Nombre = data.Nombre;
                 juego.IdGenero = data.IdGenero;
                 juego.IdConsola = data.IdConsola;
@@ -92,7 +93,7 @@ namespace GameStore.Services
         {
             var juego = new Juego()
             {
-                Id = data.Id,
+                //Id = data.Id,
                 Nombre = data.Nombre,
                 IdGenero = data.IdGenero,
                 IdConsola = data.IdConsola,

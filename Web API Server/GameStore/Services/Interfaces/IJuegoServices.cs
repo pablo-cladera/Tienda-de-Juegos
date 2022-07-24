@@ -8,7 +8,7 @@ namespace GameStore.Services.Interfaces
     {
         IEnumerable<Juego> GetAll();
         Juego GetOne(decimal Id);
-        IEnumerable<Juego> GetByConsola(decimal tipoConsola);
+        IEnumerable<Juego> GetByConsola(string tipoConsola);
         IEnumerable<Juego> GetByGenero(decimal tipoGenero);
         IEnumerable<Juego> GetByName(string nombreJuego);
 

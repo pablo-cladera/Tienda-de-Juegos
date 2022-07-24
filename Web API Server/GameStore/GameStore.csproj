@@ -26,6 +26,7 @@
     <Folder Include="Migrations\" />
     <Folder Include="Models\Entities\" />
     <Folder Include="Models\Enum\" />
+    <Folder Include="Tools\" />
   </ItemGroup>
 
 </Project>

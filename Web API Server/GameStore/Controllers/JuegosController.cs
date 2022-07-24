@@ -69,9 +69,10 @@ namespace GameStore.Controllers
         [Route("byConsola")]
         [HttpGet]
 
-        public ActionResult<JuegoViewModel> GetByConsola(decimal IdConsola)
+        public ActionResult<JuegoViewModel> GetByConsola(string nombreConsola)
+            //public ActionResult<JuegoViewModel> GetByConsola(decimal IdConsola)
         {
-            var juego = _juegoService.GetByConsola(IdConsola);
+            var juego = _juegoService.GetByConsola(nombreConsola);
 
             if (juego == null)
             {

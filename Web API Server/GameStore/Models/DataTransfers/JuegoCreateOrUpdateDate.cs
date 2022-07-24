@@ -2,8 +2,10 @@
 {
     public class JuegoCreateOrUpdateDate
     {
-        public decimal Id { get; set; }
-        public string? Nombre { get; set; }
+        internal readonly decimal id;
+
+        //public decimal Id { get; set; }
+        public string Nombre { get; set; }
         public decimal IdGenero { get; set; }
         public decimal IdConsola { get; set; }
         public decimal IdDesarroladores { get; set; }

@@ -47,7 +47,7 @@ namespace GameStore.Datos
 
                 entity.Property(e => e.Nombre)
                     .IsRequired()
-                    .HasMaxLength(20)
+                    .HasMaxLength(30)
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.IdProvinciaNavigation)
@@ -69,7 +69,9 @@ namespace GameStore.Datos
 
             modelBuilder.Entity<Compra>(entity =>
             {
-                entity.Property(e => e.Id).HasColumnType("numeric(18, 0)");
+                entity.Property(e => e.Id)
+                    .HasColumnType("numeric(18, 0)")
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.FacturaNumero)
                     .IsRequired()
@@ -129,7 +131,9 @@ namespace GameStore.Datos
 
             modelBuilder.Entity<DetalleDeCompra>(entity =>
             {
-                entity.Property(e => e.Id).HasColumnType("numeric(18, 0)");
+                entity.Property(e => e.Id)
+                    .HasColumnType("numeric(18, 0)")
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Descuento).HasColumnType("decimal(18, 0)");
 
@@ -138,8 +142,6 @@ namespace GameStore.Datos
                 entity.Property(e => e.IdJuego).HasColumnType("numeric(18, 0)");
 
                 entity.Property(e => e.Precio).HasColumnType("decimal(18, 0)");
-
-                entity.Property(e => e.Total).HasColumnType("decimal(18, 0)");
 
                 entity.HasOne(d => d.IdCompraNavigation)
                     .WithMany(p => p.DetalleDeCompra)
@@ -156,7 +158,9 @@ namespace GameStore.Datos
 
             modelBuilder.Entity<DetalleDeVenta>(entity =>
             {
-                entity.Property(e => e.Id).HasColumnType("numeric(18, 0)");
+                entity.Property(e => e.Id)
+                    .HasColumnType("numeric(18, 0)")
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Descuento).HasColumnType("decimal(18, 0)");
 
@@ -191,7 +195,9 @@ namespace GameStore.Datos
 
             modelBuilder.Entity<Juego>(entity =>
             {
-                entity.Property(e => e.Id).HasColumnType("numeric(18, 0)");
+                entity.Property(e => e.Id)
+                    .HasColumnType("numeric(18, 0)")
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.AñoLanzamiento)
                     .HasMaxLength(4)
@@ -249,7 +255,9 @@ namespace GameStore.Datos
 
             modelBuilder.Entity<Persona>(entity =>
             {
-                entity.Property(e => e.Id).HasColumnType("numeric(18, 0)");
+                entity.Property(e => e.Id)
+                    .HasColumnType("numeric(18, 0)")
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Apellido)
                     .IsRequired()
@@ -296,7 +304,7 @@ namespace GameStore.Datos
 
                 entity.Property(e => e.Telefono)
                     .IsRequired()
-                    .HasMaxLength(15)
+                    .HasMaxLength(20)
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.IdCiudadNavigation)
@@ -399,7 +407,9 @@ namespace GameStore.Datos
 
             modelBuilder.Entity<Venta>(entity =>
             {
-                entity.Property(e => e.Id).HasColumnType("numeric(18, 0)");
+                entity.Property(e => e.Id)
+                    .HasColumnType("numeric(18, 0)")
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.FacturaNumero)
                     .IsRequired()

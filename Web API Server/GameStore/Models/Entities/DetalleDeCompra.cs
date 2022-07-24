@@ -12,7 +12,6 @@ namespace GameStore.Models.Entities
         public decimal IdJuego { get; set; }
         public decimal Precio { get; set; }
         public int Cantidad { get; set; }
-        public decimal Total { get; set; }
         public decimal? Descuento { get; set; }
 
         public virtual Compra IdCompraNavigation { get; set; }
