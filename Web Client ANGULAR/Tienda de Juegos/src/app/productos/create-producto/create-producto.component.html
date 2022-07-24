@@ -13,6 +13,11 @@
           <form autocomplete="off"
           (ngSubmit)="guardar()"
           [formGroup]="miForm">
+
+        <!-- <mat-form-field appearance="outline">   
+        <input class="form-control" formControlName="id" required matInput>
+            <mat-hint>Campo Obligatorio</mat-hint>
+        </mat-form-field> -->
           
           <mat-form-field appearance="outline">
               <mat-label>Nombre</mat-label>
@@ -24,7 +29,10 @@
   
           <mat-form-field appearance="outline">
               <mat-label>Genero</mat-label>
-              <select matNativeControl required>
+              <select matNativeControl 
+                      class="form-control"
+                      formControlName="idGenero" 
+                      required>
                 <option value="1">Deporte</option>
                 <option value="2">Aventura</option>
                 <option value="3">Shooter</option>
@@ -35,7 +43,10 @@
 
           <mat-form-field appearance="outline">
             <mat-label>Consola</mat-label>
-            <select matNativeControl required>
+            <select matNativeControl 
+                    class="form-control"
+                    formControlName="idConsola" 
+                    required>
               <option value="1">Play Station 5</option>
               <option value="2">Play Station 4</option>
               <option value="3">Play Station 3</option>
@@ -49,7 +60,10 @@
 
         <mat-form-field appearance="outline">
             <mat-label>Desarrolladores</mat-label>
-            <select matNativeControl required>
+            <select matNativeControl 
+                      class="form-control"
+                      formControlName="idDesarrolladores" 
+                      required>
               <option value="1">EA Sport</option>
               <option value="2">Activision</option>
               <option value="3">Blizzard</option>
@@ -62,7 +76,10 @@
 
         <mat-form-field appearance="outline">
             <mat-label>Clasificacion</mat-label>
-            <select matNativeControl required>
+            <select matNativeControl 
+                      class="form-control"
+                      formControlName="idClasificacion" 
+                      required>
               <option value="1">Todos</option>
               <option value="2">Adolescente</option>
               <option value="3">Madure</option>

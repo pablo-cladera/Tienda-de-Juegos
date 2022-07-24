@@ -3,12 +3,15 @@ import { FormBuilder, Validators } from "@angular/forms";
 import { VentaCreate } from "../interface/ventaCreate.interface";
 import { VentasService } from "../services/ventas.service";
 
+
+  
 @Component({
     selector: 'app-create-venta',
     templateUrl: './create-venta.component.html',
     styleUrls: ['./create-venta.component.scss']
   })
   
+
   export class CreateVentaComponent implements OnInit {
      miForm = this.formBuilder.group(
        {
@@ -22,15 +25,18 @@ import { VentasService } from "../services/ventas.service";
          total: [, [Validators.required, Validators.minLength(1)]],
        }
      )
+     
+     
   
      constructor(private formBuilder: FormBuilder,
-                 private ventaService: VentasService) { }
+                 private ventaService: VentasService,
+                 ) { }
   
      ngOnInit(): void {
        const ran = 5;
        this.miForm.reset(
          {
-           stock : 5
+           fecha : 5
          }
        ); 
      }
@@ -40,13 +46,15 @@ import { VentasService } from "../services/ventas.service";
               this.miForm.controls[field].touched;
      }
   
-     guardar(){
+     agregarJuego(){
        if (this.miForm.invalid){
         this.miForm.markAllAsTouched();
          return;
        }
+
+       
   
-       console.log('guardando juego');
+       console.log('guardando venta');
   
        const newVenta: VentaCreate = {
   
@@ -65,7 +73,9 @@ import { VentasService } from "../services/ventas.service";
          {
            stock : 5
          }      
-       );    
+       );   
+       
+       
     }
   }
   

@@ -12,7 +12,7 @@ import { ProductosService } from '../services/productos.service';
 export class CreateProductoComponent implements OnInit {
    miForm = this.formBuilder.group(
      {
-       id: [, [Validators.required, Validators.minLength(1)] ],
+       //id: [, [Validators.required, Validators.minLength(1)] ],
        nombre: [, [Validators.required, Validators.minLength(3)]],
        idGenero: [, [Validators.required, Validators.min(1)]],
        idConsola: [, [Validators.required, Validators.min(1)]],
@@ -53,7 +53,7 @@ export class CreateProductoComponent implements OnInit {
 
      const newJuego: ProductoCreate = {
 
-       id: this.miForm.controls['id'].value,
+       //id: this.miForm.controls['id'].value,
        nombre: this.miForm.controls['nombre'].value,
        idGenero: this.miForm.controls['idGenero'].value,
        idConsola: this.miForm.controls['idConsola'].value,

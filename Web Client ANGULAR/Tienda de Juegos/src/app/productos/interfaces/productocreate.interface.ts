@@ -1,6 +1,6 @@
 export interface ProductoCreate {
 
-    id:               number;
+    //id:               number;
     nombre:           string;
     idGenero:         number;
     idConsola:        number;
