@@ -52,7 +52,7 @@ namespace GameStore.Controllers
 
         [Route("TipoPersona")]
         [HttpGet]
-        public ActionResult<PersonaViewModel> GetTipoPersona(decimal tipoPersona)
+        public ActionResult<PersonaViewModel> GetTipoPersona(string tipoPersona)
         {
 
             var persona = _personaService.GetTipoPersona(tipoPersona);

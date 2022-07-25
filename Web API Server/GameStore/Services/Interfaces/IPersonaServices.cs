@@ -7,7 +7,7 @@ namespace GameStore.Services.Interfaces
     public interface IPersonaServices
     {
         IEnumerable<Persona> GetAll();
-        IEnumerable<Persona> GetTipoPersona(decimal TipoPersona);
+        IEnumerable<Persona> GetTipoPersona(string TipoPersona);
 
         Persona GetOne(decimal personaId);
         IEnumerable<Persona> GetByName(string nombrePersona);

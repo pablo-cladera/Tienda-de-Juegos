@@ -29,9 +29,9 @@ namespace GameStore.Services
                                    .ToList();
         }
 
-        public IEnumerable<Persona> GetTipoPersona(decimal TipoPersona)
+        public IEnumerable<Persona> GetTipoPersona(string TipoPersona)
         {
-            return _context.Persona.Where(x => x.IdTipoPersona == TipoPersona)
+            return _context.Persona.Where(x => x.IdTipoPersonaNavigation.Nombre == TipoPersona)
             //return _context.Persona.Where(x => EF.Functions.Like(x.IdTipoPersonaNavigation.Nombre, $"%{TipoPersona}%"))
                                    .Include(c => c.IdTipoPersonaNavigation)
                                    .Include(c => c.IdCiudadNavigation)
