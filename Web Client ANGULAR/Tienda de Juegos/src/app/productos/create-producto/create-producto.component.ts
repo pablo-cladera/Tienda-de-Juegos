@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ProductoCreate } from '../interfaces/productocreate.interface';
 import { ProductosService } from '../services/productos.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create-producto',
@@ -50,6 +51,13 @@ export class CreateProductoComponent implements OnInit {
      }
 
      console.log('guardando juego');
+     Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Su juego ha sigo guardado correctamente',
+      showConfirmButton: false,
+      timer: 1500
+    })
 
      const newJuego: ProductoCreate = {
 
@@ -62,8 +70,8 @@ export class CreateProductoComponent implements OnInit {
        añoLanzamiento: this.miForm.controls['añoLanzamiento'].value,
        precio: this.miForm.controls['precio'].value,
        stock: this.miForm.controls['stock'].value,
-       stockMin: this.miForm.controls['stockmin'].value,
-       stockMax: this.miForm.controls['stockmax'].value,
+       stockMin: this.miForm.controls['stockMin'].value,
+       stockMax: this.miForm.controls['stockMax'].value,
      }
 
      this.productoService.crear(newJuego);
