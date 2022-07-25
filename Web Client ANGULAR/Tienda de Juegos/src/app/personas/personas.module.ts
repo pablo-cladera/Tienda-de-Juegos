@@ -9,7 +9,8 @@ import { CreatePersonaComponent } from './create-persona/create-persona.componen
 import { PersonasService } from './services/personas.service';
 import { AppRoutingModule } from '../app-routing.module';
 import { MaterialModule } from '../material.module';
-import { ViewPersonaComponent } from './view-persona/view-persona.component';
+import { EditPersonaComponent } from './edit-persona/edit-persona.component';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { ViewPersonaComponent } from './view-persona/view-persona.component';
     SearchPersonasComponent, 
     MainPersonasComponent, 
     CreatePersonaComponent,
-    ViewPersonaComponent
+    EditPersonaComponent
   ],
   imports: [
     CommonModule,
@@ -27,8 +28,8 @@ import { ViewPersonaComponent } from './view-persona/view-persona.component';
   ],
   exports: [
      MainPersonasComponent,
-     CreatePersonaComponent, 
-     ViewPersonaComponent
+     CreatePersonaComponent,
+     EditPersonaComponent
   ],
   providers: [
     PersonasService

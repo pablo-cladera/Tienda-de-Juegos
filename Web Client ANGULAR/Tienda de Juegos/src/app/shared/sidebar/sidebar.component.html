@@ -6,33 +6,31 @@
       <button mat-button color="basic" [matMenuTriggerFor]="menuJuegos"> JUEGOS </button>
 
       <mat-menu #menuJuegos="matMenu">
-        <button mat-menu-item color="basic"> <mat-icon>view_headline</mat-icon> Mostrar Todo</button>
+        <button mat-menu-item color="basic"(click)="buscarJuegos()" routerLink="mainJuegos"> <mat-icon>view_headline</mat-icon> Mostrar Todo</button>
         <button mat-menu-item color="basic" routerLink="crear-prod"> <mat-icon>note_add</mat-icon> Agregar</button>
         <button mat-menu-item [matMenuTriggerFor]="menuSony"><mat-icon>videogame_asset</mat-icon> SONY</button>
         <button mat-menu-item [matMenuTriggerFor]="menuMicrosoft"><mat-icon>games</mat-icon>  Microsoft</button>
       </mat-menu>
 
       <mat-menu #menuSony="matMenu">
-            <button mat-menu-item color="basic" (click)="buscarConsola('play station 5')">Play Station 5</button>
-            <button mat-menu-item color="basic" (click)="buscarConsola('play station 4')">Play Station 4</button>
-            <button mat-menu-item color="basic" (click)="buscarConsola('play station 3')">Play Station 3</button>
+            <button mat-menu-item color="basic" (click)="buscarConsola('play station 5')" routerLink="mainJuegos">Play Station 5</button>
+            <button mat-menu-item color="basic" (click)="buscarConsola('play station 4')" routerLink="mainJuegos">Play Station 4</button>
+            <button mat-menu-item color="basic" (click)="buscarConsola('play station 3')" routerLink="mainJuegos">Play Station 3</button>
       </mat-menu>
    
         
         <mat-menu #menuMicrosoft="matMenu">
-            <button mat-menu-item color="basic" (click)="buscarConsola('XBox Series')">XBox Series</button>
-            <button mat-menu-item color="basic" (click)="buscarConsola('XBox One')">XBox One</button>
-            <button mat-menu-item color="basic" (click)="buscarConsola('XBox 360')">XBox 360</button>
+            <button mat-menu-item color="basic" (click)="buscarConsola('XBox Series')" routerLink="mainJuegos">XBox Series</button>
+            <button mat-menu-item color="basic" (click)="buscarConsola('XBox One')" routerLink="mainJuegos">XBox One</button>
+            <button mat-menu-item color="basic" (click)="buscarConsola('XBox 360')" routerLink="mainJuegos">XBox 360</button>
         </mat-menu>
 
         <button mat-button color="basic" [matMenuTriggerFor]="menuPersonas"> PERSONAS </button>
         <mat-menu #menuPersonas="matMenu">
-          <button mat-menu-item color="basic" routerLink="create-persona"> <mat-icon>view_headline</mat-icon>Mostrar Todo</button>
+          <button mat-menu-item color="basic" (click)="buscarPersonas()" routerLink="mainPersonas"> <mat-icon>view_headline</mat-icon>Mostrar Todo</button>
           <button mat-menu-item color="basic" routerLink="create-persona"> <mat-icon>person_add</mat-icon>Agregar</button>
-          <button mat-menu-item color="basic" (click)="buscarTipoPersona('cliente')">Clientes</button>
-          <button mat-menu-item color="basic" (click)="buscarTipoPersona('proveedor')">Proveedores</button>
-          <!-- <button mat-menu-item color="basic" routerLink="mostrar-clientes"> <mat-icon>person</mat-icon>Clientes</button>
-          <button mat-menu-item color="basic" routerLink="mostrar-proveedores"> <mat-icon>person</mat-icon>Proveedores</button> -->
+          <button mat-menu-item color="basic" (click)="buscarTipoPersona('cliente')" routerLink="mainPersonas"><mat-icon>person</mat-icon>Clientes</button>
+          <button mat-menu-item color="basic" (click)="buscarTipoPersona('proveedor')" routerLink="mainPersonas"><mat-icon>person</mat-icon>Proveedores</button>
         </mat-menu>
 
         <button mat-button color="basic" [matMenuTriggerFor]="menuVentas">VENTAS </button>

@@ -4,8 +4,6 @@ import Swal from 'sweetalert2';
 import { ProductosModule } from '../productos.module';
 
 
-
-
 @Component({
   selector: 'app-result-productos',
   templateUrl: './result-productos.component.html',
@@ -45,9 +43,6 @@ export class ResultProductosComponent  {
         )
       }
     })
-      // console.log(`Nro de id a eliminar:${id}`);
-      // this.prodsService.eliminarJuegoService(id)
-      // .subscribe();
    }
    
 }

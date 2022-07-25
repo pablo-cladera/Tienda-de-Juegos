@@ -9,15 +9,29 @@ import { MostrarProductosComponent } from './productos/mostrar-producto/mostrar-
 
 import { CreatePersonaComponent } from './personas/create-persona/create-persona.component';
 import { CreateVentaComponent } from './Venta/create-venta/create-venta.component';
+import { MainPersonasComponent } from './personas/main-personas/main-personas.component';
+import { EditPersonaComponent } from './personas/edit-persona/edit-persona.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
 // import { MainClientesComponent } from './personas/main-clientes/main-clientes.component';
 
 // import { ViewClienteComponent } from './personas/view-clientes/view-clientes.component';
 // import { ViewProveedoresComponent } from './personas/view-proveedores/view-proveedores.component';
 
 const routes: Routes = [
+
+  //Ruta Principal
   {
-    //Rutas Productos
     path: '',
+    // component: SidebarComponent,
+    // pathMatch: 'full'
+    component: MainProductosComponent,
+    pathMatch: 'full'
+  },
+  
+
+  //Rutas Productos
+    {
+    path: 'mainJuegos',
     component: MainProductosComponent,
     pathMatch: 'full'
   },
@@ -29,43 +43,35 @@ const routes: Routes = [
    path: 'edit-prod/:idprod',
     component: EditProductoComponent
   },
-  {
-    path: 'eliminar-prod/:idprod',
-    component: ViewProductoComponent
-  },
-  {
-    //                  /:value
-    path: 'mostrar-prod/:value',
-    component: MostrarProductosComponent
-  },
+
+
 
   //Rutas Personas
+  {
+    path: 'mainPersonas',
+    component: MainPersonasComponent,
+    pathMatch: 'full'
+  },
   {
     path: 'create-persona',
     component: CreatePersonaComponent
   },
-  // {
-  //   path: 'mostrar-clientes',
-  //   component: MainClientesComponent
-  // },
-//  {
-  //   path: 'mostrar-clientes',
-  //   component: ViewClienteComponent
-//   },
-//   {
-    //  path: 'mostrar-proveedores',
-    //  component: ViewProveedoresComponent
-//  }
- //Rutas Personas
- {
-  path: 'create-venta',
-  component: CreateVentaComponent
-},
-{
-  path: '**',
-  redirectTo: ''
-},
-]
+   {
+     path: 'edit-pers/:value',
+     component: EditPersonaComponent
+   },
+
+
+  //Rutas Ventas
+  {
+    path: 'create-venta',
+    component: CreateVentaComponent
+  },
+  {
+    path: '**',
+    redirectTo: ''
+  },
+  ]
 
 @NgModule({
   imports: [

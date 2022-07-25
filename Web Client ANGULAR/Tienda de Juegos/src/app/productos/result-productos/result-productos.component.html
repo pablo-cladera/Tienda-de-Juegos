@@ -24,7 +24,6 @@
     <tbody>
         <tr *ngFor="let prod of resultados; let i = index">
             <td>
-                <!-- {{prod.id}} -->
                 {{i + 1}}
             </td>
             <td>
@@ -42,10 +41,9 @@
 
             <td>
                 <button mat-menu-item (click)="eliminarJuego(prod.id)" class="btn btn-danger"> <mat-icon>delete_forever</mat-icon>Eliminar</button>
-                <button mat-menu-item routerLink="edit-prod/{{i+1}}" class="btn btn-primary"><mat-icon>edit</mat-icon>Editar</button>
+                <button mat-menu-item routerLink="edit-prod/{{prod.id}}" class="btn btn-primary"><mat-icon>edit</mat-icon>Editar</button>
             </td>                                                           
         </tr>
     </tbody>            
 </table>
 
-<!-- routerLink="eliminar-prod/{{i+1}}" -->

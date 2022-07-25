@@ -15,6 +15,7 @@ export class ProductosService {
 
 
     urlProd:string = environment.apiUri + "/Juegos/";
+
     get todosProductos() {
         return [...this._productos];
     }
@@ -38,7 +39,7 @@ export class ProductosService {
     }
 
     buscarTodosProductos(){
-        this.http.get<JuegoViewModel[]>('all')
+        this.http.get<JuegoViewModel[]>(`${this.urlProd}all`)
             .subscribe(
                 resp => {
                     this._productos = resp;
@@ -70,10 +71,7 @@ export class ProductosService {
                     this._productos = resp;
                 }
             );
-        if (!this._historial.includes(argumento)){
-            this._historial.push(argumento);
-            localStorage.setItem('historial',JSON.stringify(this._historial));
-        }
+
     } 
 
     buscarProdById(idProd:number): Observable<ProductoLite>{

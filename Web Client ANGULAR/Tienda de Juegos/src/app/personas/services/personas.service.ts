@@ -6,12 +6,10 @@ import { PersonaLite } from '../interfaces/personalite.interface';
 import { Observable } from "rxjs";
 import { PersonaCreate } from '../interfaces/personacreate.interface';
 import { catchError } from "rxjs/operators";
-import { PersonaVMLite } from "../interfaces/personaVMLite";
 
 @Injectable()
 export class PersonasService {
     private _personas: PersonaViewModel[] = [];
-    private _personasLite: PersonaVMLite[] = [];
     private _historial: string[] = [];
 
     urlProd:string = environment.apiUri + "/Personas/";
@@ -32,21 +30,18 @@ export class PersonasService {
     }
 
     buscarTodasPersonas(){
-        this.http.get<PersonaViewModel[]>('all')
+        this.http.get<PersonaViewModel[]>(`${this.urlProd}all`)
             .subscribe(
                 resp => {
                     this._personas = resp;
                 }
             );
     }
-    buscarTodasPersonasLite(){
-        this.http.get<PersonaVMLite[]>('all')
-            .subscribe(
-                resp => {
-                    this._personasLite = resp;
-                }
-            );
-    }
+    eliminarPersona(Id: number): Observable<PersonaViewModel>{
+        console.log(`Calling WebApi`);
+        return this.http.delete<PersonaViewModel>(`${this.urlProd}${Id}`);
+      }
+
 
     buscarPersByName(argumento:string){
         const params = new HttpParams().set('nombre',argumento); 
@@ -67,10 +62,10 @@ export class PersonasService {
         const params = new HttpParams().set('tipoPersona',argumento); 
         console.log('funciona')
  
-        this.http.get<PersonaVMLite[]>(`${this.urlProd}TipoPersona?`, {params})
+        this.http.get<PersonaViewModel[]>(`${this.urlProd}TipoPersona?`, {params})
             .subscribe(
                 resp => {
-                    this._personasLite = resp;
+                    this._personas = resp;
                 }
             );
         if (!this._historial.includes(argumento)){
