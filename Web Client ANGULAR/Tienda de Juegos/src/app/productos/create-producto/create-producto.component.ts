@@ -34,7 +34,7 @@ export class CreateProductoComponent implements OnInit {
      const ran = 5;
      this.miForm.reset(
        {
-         stock : 5
+         stock : ""
        }
      ); 
    }

@@ -3,5 +3,6 @@ export interface JuegoViewModel {
     nombre:  string;
     genero:  string;
     consola: string;
+    //precio: number;
     stock:   number;
 }

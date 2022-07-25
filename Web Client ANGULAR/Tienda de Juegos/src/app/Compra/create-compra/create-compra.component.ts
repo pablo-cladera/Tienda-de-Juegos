@@ -2,26 +2,27 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { PersonasService } from "src/app/personas/services/personas.service";
 import { ProductosService } from "src/app/productos/services/productos.service";
-import { DetalleVentaCreate } from "../interface/detalleVentaCreate";
-import { VentaCreate } from "../interface/ventaCreate.interface";
-import { VentasService } from "../services/ventas.service";
+import { CompraCreate } from "../interface/CompraCreate";
+import { DetalleCompraCreate } from "../interface/detalleCompraCreate";
+import { ComprasService } from "../service/compras.service";
+
 
 
   
 @Component({
-    selector: 'app-create-venta',
-    templateUrl: './create-venta.component.html',
-    styleUrls: ['./create-venta.component.scss']
+    selector: 'app-create-compra',
+    templateUrl: './create-compra.component.html',
+    styleUrls: ['./create-compra.component.scss']
   })
   
 
-  export class CreateVentaComponent implements OnInit {
+  export class CreateCompraComponent implements OnInit {
     
 
     miFormDetalle = this.formBuilder.group(
       {
         id: [, [Validators.required, Validators.minLength(1)] ],
-        idVenta: [, [Validators.required, Validators.min(1)]],
+        idCompra: [, [Validators.required, Validators.min(1)]],
         idJuego: [, [Validators.required, Validators.min(1)]],
         cantidad: [, [Validators.required, Validators.min(1)]],
         precio: [, [Validators.required, Validators.min(1)]],
@@ -51,7 +52,7 @@ import { VentasService } from "../services/ventas.service";
      }
   
      constructor(private formBuilder: FormBuilder,
-                 private ventaService: VentasService,
+                 private compraService: ComprasService,
                  private personasService: PersonasService,
                  private productosService: ProductosService
                  ) { }
@@ -76,17 +77,17 @@ import { VentasService } from "../services/ventas.service";
          return;
        }
 
-       const newDetalleVenta: DetalleVentaCreate = {
+       const newDetalleCompra: DetalleCompraCreate = {
   
         id: this.miFormDetalle.controls['id'].value,
-        idVenta: this.miFormDetalle.controls['idVenta'].value,
+        idCompra: this.miFormDetalle.controls['idVenta'].value,
         idJuego: this.miFormDetalle.controls['idJuego'].value,
         cantidad: this.miFormDetalle.controls['cantidad'].value,
         precio: this.miFormDetalle.controls['precio'].value,
         descuento: this.miFormDetalle.controls['descuento'].value
       }
  
-      this.ventaService.crearDetalleVenta(newDetalleVenta);
+      this.compraService.crearDetalleCompra(newDetalleCompra);
   
        this.miFormDetalle.reset(
          {
@@ -105,7 +106,7 @@ import { VentasService } from "../services/ventas.service";
 
          console.log('guardando venta');
   
-         const newVenta: VentaCreate = {
+         const newVenta: CompraCreate = {
     
            id: this.miFormVenta.controls['id'].value,
            idPersona: this.miFormVenta.controls['idPersona'].value,
@@ -115,7 +116,7 @@ import { VentasService } from "../services/ventas.service";
            total: this.miFormVenta.controls['total'].value
          }
     
-         this.ventaService.crearVenta(newVenta);
+         this.compraService.crearCompra(newVenta);
 
          this.miFormVenta.reset(
           {
@@ -126,4 +127,3 @@ import { VentasService } from "../services/ventas.service";
 
           
   }
-  

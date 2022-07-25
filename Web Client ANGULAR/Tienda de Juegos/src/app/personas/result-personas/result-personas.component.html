@@ -40,7 +40,7 @@
             <td>
                 {{pers.tipoPersona}}
             </td>
-            <td>
+            <td class="menuBotones">
                 <button mat-menu-item (click)="eliminarPersona(pers.id)" class="btn btn-danger"> <mat-icon>delete_forever</mat-icon>Eliminar</button>
                 <button mat-menu-item routerLink="edit-pers/{{pers.id}}" class="btn btn-primary"><mat-icon>edit</mat-icon>Editar</button>
             </td>

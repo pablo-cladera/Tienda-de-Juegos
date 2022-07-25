@@ -12,6 +12,7 @@ import { CreateVentaComponent } from './Venta/create-venta/create-venta.componen
 import { MainPersonasComponent } from './personas/main-personas/main-personas.component';
 import { EditPersonaComponent } from './personas/edit-persona/edit-persona.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { CreateCompraComponent } from './Compra/create-compra/create-compra.component';
 // import { MainClientesComponent } from './personas/main-clientes/main-clientes.component';
 
 // import { ViewClienteComponent } from './personas/view-clientes/view-clientes.component';
@@ -67,6 +68,13 @@ const routes: Routes = [
     path: 'create-venta',
     component: CreateVentaComponent
   },
+
+  //Rutas Compras
+  {
+    path: 'create-compra',
+    component: CreateCompraComponent
+  },
+
   {
     path: '**',
     redirectTo: ''

@@ -1,6 +1,6 @@
 export interface VentaViewModel {
     id: number;
-    idDetalleVenta: number;
+    idDetalleCompra: number;
     nombreJuego:  string;
     nombreSucursal: number;
     facturaNro:  number;

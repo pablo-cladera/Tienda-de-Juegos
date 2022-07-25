@@ -1,4 +1,4 @@
-<h2> Nueva Venta </h2><hr>
+<h2> Nueva Compra </h2><hr>
 
 <div class="main">
     <mat-card class="example-card">
@@ -7,7 +7,7 @@
           (ngSubmit)="agregarDetalleVenta()"
           [formGroup]="miFormDetalle">
           
-            <h2> Detalle de venta </h2>   
+            <h2> Detalle de compra </h2>   
     
             <mat-form-field appearance="outline">
                 <mat-label>Cliente</mat-label>
@@ -56,52 +56,3 @@
       </mat-card>
       
 </div>
-
-<!-- <div class="main">
-    <mat-card class="example-card">
-          
-          <form autocomplete="off"
-          (ngSubmit)="agregarJuego()"
-          [formGroup]="miForm">
-          
-            <h2> Registro de venta </h2>   
-    
-            <mat-form-field appearance="outline">
-                <mat-label>Lista de Productos</mat-label>
-
-                
-            </mat-form-field>
-
-
-            <mat-form-field appearance="outline">
-                <mat-label>Cantidad</mat-label>
-                <input class="form-control" formControlName="cantidad" required matInput placeholder="xxxx" >
-                <mat-hint>Campo Obligatorio</mat-hint>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-                <mat-label>Cliente</mat-label>
-                <select matNativeControl required>
-                    <option value="1">Pablo Cladera</option>
-                    <option value="2">Pablo Tiche</option>
-                    <option value="3">Juan Manuel Iturbe</option>
-                    <option value="4">Pablo Cesar Aimar</option>
-                </select>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-                <mat-label>Descuento</mat-label>
-                <input class="form-control" formControlName="descuento" required matInput placeholder="FIFA" >
-                <mat-hint>Campo Obligatorio</mat-hint>
-            </mat-form-field>     
-
-                    
-            <mat-card-actions>
-                <button mat-button type="submit" matTooltip="guardar" (click)="agregarJuego()"  color="primary"><mat-icon>add_circle</mat-icon>Registrar Venta</button>
-                <button mat-button color="warn"><mat-icon>cancel</mat-icon>Cancelar</button>
-            </mat-card-actions>
-        </form>
-       
-      </mat-card>
-      
-</div> -->

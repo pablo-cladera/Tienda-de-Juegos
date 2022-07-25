@@ -1,4 +1,4 @@
-export interface VentaCreate {
+export interface CompraCreate {
 
     id:               number;
     idPersona:        number;

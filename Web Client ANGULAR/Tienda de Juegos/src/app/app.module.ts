@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ComprasModule } from './Compra/compras.module';
 
 
 
@@ -34,6 +35,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     FormsModule, 
     ReactiveFormsModule,
+    ComprasModule
     
   ],
   providers: [],

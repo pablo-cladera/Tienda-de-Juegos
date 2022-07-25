@@ -5,8 +5,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-result-personas',
   templateUrl: './result-personas.component.html',
-  styles: [
-  ]
+  styleUrls: []
 })
 export class ResultPersonasComponent {
 
