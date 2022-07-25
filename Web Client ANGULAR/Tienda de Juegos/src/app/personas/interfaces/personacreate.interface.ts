@@ -1,6 +1,6 @@
 export interface PersonaCreate 
 {
-    id:              number;
+    //id:              number;
     nombre:          string;
     apellido:        string;
     idTipoPersona:   number;
@@ -11,6 +11,6 @@ export interface PersonaCreate
     email:           string;
     calle:           string;
     numeroCalle:     string;
-    idCiudad:          number;
+    idCiudad:        number;
     codigoPostal:    string;
 }

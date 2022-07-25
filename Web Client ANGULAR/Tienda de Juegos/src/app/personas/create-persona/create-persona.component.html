@@ -1,232 +1,119 @@
-<h2>Nueva Persona</h2>
-<hr>
-<div class="row">
-    <div class="col">
-        <form autocomplete="off"
-              (ngSubmit)="guardar()"
-              [formGroup]="miForm">
+<div class="main">
+    <mat-card class="example-card">
+        
+          <h2> Nueva Persona </h2>
+          <hr>
+          
+          <form autocomplete="off"
+          (ngSubmit)="guardar()"
+          [formGroup]="miForm">
+          
+          <mat-form-field appearance="outline">
+              <mat-label>Nombre Persona</mat-label>
+              <input class="form-control" formControlName="nombre" required matInput placeholder="Nombre" >
+              <mat-hint>Campo Obligatorio</mat-hint>
+          </mat-form-field>
 
-              <div class="mb-3 row">
-                <label class="col-sm-3 col-form-label">ID Persona</label>
-                <div class="col-sm-9">
-                  <input type="number" 
-                         class="form-control" 
-                         placeholder="ID de la Persona"
-                         formControlName="id"
-                         >
-                         <span class="form-text text-danger"
-                               *ngIf="tieneError('id')">
-                            Ingrese ID
-                         </span>                         
-                </div>
-                </div>
+          <mat-form-field appearance="outline">
+            <mat-label>Apellido Persona</mat-label>
+            <input class="form-control" formControlName="apellido" required matInput placeholder="Apellido" >
+            <mat-hint>Campo Obligatorio</mat-hint>
+          </mat-form-field>
+          
+  
+          <mat-form-field appearance="outline">
+              <mat-label>Tipo de Persona</mat-label>
+              <select matNativeControl required formControlName="idTipoPersona">
+                <option value="1">Cliente</option>
+                <option value="2">Proveedor</option>
+              </select>
+          </mat-form-field>
 
-                <div class="mb-3 row">
-                    <label class="col-sm-3 col-form-label">Nombre Persona</label>
-                    <div class="col-sm-9">
-                    <input type="text" 
-                            class="form-control" 
-                            placeholder="Nombre de la Persona"
-                            formControlName="nombre"
-                            >
-                            <span class="form-text text-danger"
-                                *ngIf="tieneError('nombre')">
-                                Minimo 3 letras
-                            </span>
-                    </div>
-                </div>
-
-                <div class="mb-3 row">
-                    <label class="col-sm-3 col-form-label">Apellido Persona</label>
-                    <div class="col-sm-9">
-                    <input type="text" 
-                            class="form-control" 
-                            placeholder="Apellido de la Persona"
-                            formControlName="apellido"
-                            >
-                            <span class="form-text text-danger"
-                                *ngIf="tieneError('apellido')">
-                                Minimo 3 letras
-                            </span>
-                    </div>
-                </div> 
-
-                <div class="mb-3 row">
-                    <label class="col-sm-3 col-form-label">Tipo Persona</label>
-                    <div class="col-sm-9">
-                        <select name="dropdown" 
-                        class="form-control"
-                        formControlName="idTipoPersona">
-                       <option value="1">Cliente</option>
-                       <option value="2">Proveedor</option>
-                   </select>
-                        <span class="form-text text-danger"
-                            *ngIf="tieneError('idTipoPersona')">
-                        Seleccione un Tipo
-                        </span>                         
-                    </div>
-                    </div>
-
-                
-                    <div class="mb-3 row">
-                        <label class="col-sm-3 col-form-label">Tipo Documento</label>
-                        <div class="col-sm-9">
-                            <select name="dropdown" 
-                            class="form-control"
-                            formControlName="idTipoDocumento">
-                            <option value="1">DNI</option>
-                            <option value="2">LE</option>
-                            <option value="3">LC</option>
-                            </select>
-                            <span class="form-text text-danger"
-                                *ngIf="tieneError('idTipoDocumento')">
-                                Seleccione un Tipo
-                            </span>                         
-                        </div>
-                        </div>
-
-              <div class="mb-3 row">
-                <label class="col-sm-3 col-form-label">Ingresar Documento</label>
-                <div class="col-sm-9">
-                  <input type="text" 
-                         class="form-control" 
-                         placeholder="Documento sin puntos"
-                         formControlName="documento"
-                         >
-                         <span class="form-text text-danger"
-                               *ngIf="tieneError('documento')">
-                            Ingrese DNI valido y sin puntos
-                         </span>                         
-                </div>
-                </div>
-
-                <div class="mb-3 row">
-                    <label class="col-sm-3 col-form-label">Tipo Telefono</label>
-                    <div class="col-sm-9">
-                        <select name="dropdown" 
-                        class="form-control"
-                        formControlName="idTipoTelefono">
-                        <option value="1">Celular</option>
-                        <option value="2">Casa</option>
-                        <option value="3">Trabajo</option>
-                        </select>
-                             <span class="form-text text-danger"
-                                   *ngIf="tieneError('idTipoTelefono')">
-                                Seleccione un Tipo
-                             </span>                         
-                    </div>
-                    </div>
-   
-                
-                <div class="mb-3 row">
-                    <label class="col-sm-3 col-form-label">Telefono</label>
-                    <div class="col-sm-9">
-                    <input type="text" 
-                            class="form-control" 
-                            placeholder="Telefono de la Persona"
-                            formControlName="telefono"
-                            >
-                            <span class="form-text text-danger"
-                                *ngIf="tieneError('telefono')">
-                                Minimo 3 letras
-                            </span>
-                    </div>
-                </div>  
-
-                <div class="mb-3 row">
-                    <label class="col-sm-3 col-form-label">E-Mail</label>
-                    <div class="col-sm-9">
-                    <input type="text" 
-                            class="form-control" 
-                            placeholder="Email de la Persona"
-                            formControlName="email">
-                            <span class="form-text text-danger"
-                                *ngIf="tieneError('email')">
-                                ingrese un correo valido
-                            </span>
-                    </div>
-                </div>
-
-                <div class="mb-3 row">
-                    <label class="col-sm-3 col-form-label">Nombre Calle</label>
-                    <div class="col-sm-9">
-                    <input type="text" 
-                            class="form-control" 
-                            placeholder="Nombre de la Calle en la que vive la Persona"
-                            formControlName="calle"
-                            >
-                            <span class="form-text text-danger"
-                                *ngIf="tieneError('calle')">
-                                Minimo 3 letras
-                            </span>
-                    </div>
-                </div>  
-
-                <div class="mb-3 row">
-                    <label class="col-sm-3 col-form-label">Numero Calle</label>
-                    <div class="col-sm-9">
-                    <input type="text" 
-                            class="form-control" 
-                            placeholder="Numero de la Calle en la que vive la Persona"
-                            formControlName="numeroCalle"
-                            >
-                            <span class="form-text text-danger"
-                                *ngIf="tieneError('numeroCalle')">
-                                Ingrese DNI sin puntos
-                            </span>                         
-                    </div>
-                </div> 
+          <mat-form-field appearance="outline">
+            <mat-label>Tipo Documento</mat-label>
+            <select matNativeControl required formControlName="idTipoDocumento">
+              <option value="1">DNI</option>
+              <option value="2">LE</option>
+              <option value="3">LC</option>
+            </select>
+        </mat-form-field>
 
 
-                <div class="mb-3 row">
-                    <label class="col-sm-3 col-form-label">ID Ciudad</label>
-                    <div class="col-sm-9">
-                        <select name="dropdown" 
-                        class="form-control"
-                        formControlName="idCiudad">
-                        <option value="1">Concepcion del Uruguay</option>
-                        <option value="2">Pronunciamiento</option>
-                        <option value="3">Colon</option>
-                        <option value="4">San Jose</option>
-                        <option value="5">Villa Elisa</option>
-                        <option value="6">Gualeguaychu</option>
-                        </select>
-                            <span class="form-text text-danger"
-                                *ngIf="tieneError('idCiudad')">
-                                Ingrese un ID
-                            </span>                         
-                    </div>
-                </div> 
-                
- 
+        <mat-form-field appearance="outline">
+            <mat-label>Numero Documento</mat-label>
+            <input class="form-control" formControlName="documento" required matInput placeholder="20000000">
+            <mat-hint>Campo Obligatorio</mat-hint>
+        </mat-form-field>
 
-                <div class="mb-3 row">
-                    <label class="col-sm-3 col-form-label">Codigo Postal</label>
-                    <div class="col-sm-9">
-                    <input type="text" 
-                            class="form-control" 
-                            placeholder="Codigo Postal de la Persona"
-                            formControlName="codigoPostal"
-                            >
-                            <span class="form-text text-danger"
-                                *ngIf="tieneError('codigoPostal')">
-                                Minimo 3 letras
-                            </span>
-                    </div>
-                </div>  
+        <mat-form-field appearance="outline">
+            <mat-label>Tipo de Telefono</mat-label>
+            <select matNativeControl required formControlName="idTipoTelefono">
+              <option value="1">Celular Personal</option>
+              <option value="2">Casa</option>
+              <option value="3">Trabajo</option>
+            </select>
+        </mat-form-field>
+    
+        
+          <mat-form-field appearance="outline">
+            <mat-label>Numero Telefono</mat-label>
+            <input type="tel" matInput placeholder="555-555-1234" formControlName="telefono">
+              <mat-hint>Campo Obligatorio</mat-hint>
+          </mat-form-field>
+          
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput [formControl]="emailFormControl" 
+                       placeholder="Ex. mail@example.com" formControlName="email">
+                <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                  Ingrese un mail correcto
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('required')">
+                  Email es <strong>requerido</strong>
+                </mat-error>
+              <mat-hint>Campo Obligatorio</mat-hint>
+            </mat-form-field>
 
-           
-                <div class="row">
-                    <div class="col">
-                        <button type="submit"
-                                class="btn btn-primary float-end">
-                            guardar
-                        </button>
-                    </div>
-                </div>
-                
+            <mat-form-field appearance="outline">
+                <mat-label>Nombre Calle</mat-label>
+                <input class="form-control" formControlName="calle" required matInput placeholder="Nombre de la Calle" >
+                <mat-hint>Campo Obligatorio</mat-hint>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Numero Calle</mat-label>
+                <input class="form-control" formControlName="numeroCalle" required matInput placeholder="Ex. 2200">
+                <mat-hint>Campo Obligatorio</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Ciudad</mat-label>
+                <select matNativeControl required formControlName="idCiudad">
+                  <option value="1">Concepcion del Uruguay</option>
+                  <option value="2">Pronunciamiento</option>
+                  <option value="3">Colon</option>
+                  <option value="4">San Jose</option>
+                  <option value="5">Villa Elisa</option>
+                  <option value="6">Gualeguaychu</option>
+                </select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Codigo Postal</mat-label>
+                <input class="form-control" formControlName="codigoPostal" required matInput placeholder="Ex. 3263">
+                <mat-hint>Campo Obligatorio</mat-hint>
+            </mat-form-field>
+          
+        
+            <mat-card-actions>
+                <button mat-button type="submit" color="primary"><mat-icon>add_circle</mat-icon>Confirmar</button>
+                <button mat-button color="warn" (click)="clear()"><mat-icon>cancel</mat-icon>Cancelar</button>
+            </mat-card-actions>
         </form>
-    </div>
+       
+      </mat-card>
+      
 </div>
 
 <div class="row">

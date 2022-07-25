@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 //import { ProductosService } from 'src/app/productos/services/productos.service';
 import { ProductosService } from 'src/app/productos/services/productos.service';
 import { MostrarProductosComponent } from 'src/app/productos/mostrar-producto/mostrar-productos.component';
+import { PersonasService } from 'src/app/personas/services/personas.service';
 
 
 
@@ -14,15 +15,22 @@ import { MostrarProductosComponent } from 'src/app/productos/mostrar-producto/mo
 
 export class SidebarComponent  {
 
-  // constructor(private mostrarService:MostrarProductosComponent){
+   constructor(private mostrarJuegosService:ProductosService,
+               private mostrarPersonasService:PersonasService){
 
-  // }
+   }
 
-  // buscarConsola(id:string)
-  // {
-  //   console.log();
-  //   this.mostrarService.buscarByConsola(id)
-  // }
+   buscarConsola(nombreConsola:string)
+   {
+     console.log("buscando....");
+     this.mostrarJuegosService.buscarProdByConsola(nombreConsola)
+   }
+
+   buscarTipoPersona(tipoPersona:string)
+   {
+     console.log("buscando....");
+     this.mostrarPersonasService.buscarPorTipoPersona(tipoPersona)
+   }
 
 }
 

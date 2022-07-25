@@ -6,10 +6,12 @@ import { PersonaLite } from '../interfaces/personalite.interface';
 import { Observable } from "rxjs";
 import { PersonaCreate } from '../interfaces/personacreate.interface';
 import { catchError } from "rxjs/operators";
+import { PersonaVMLite } from "../interfaces/personaVMLite";
 
 @Injectable()
 export class PersonasService {
     private _personas: PersonaViewModel[] = [];
+    private _personasLite: PersonaVMLite[] = [];
     private _historial: string[] = [];
 
     urlProd:string = environment.apiUri + "/Personas/";
@@ -37,6 +39,14 @@ export class PersonasService {
                 }
             );
     }
+    buscarTodasPersonasLite(){
+        this.http.get<PersonaVMLite[]>('all')
+            .subscribe(
+                resp => {
+                    this._personasLite = resp;
+                }
+            );
+    }
 
     buscarPersByName(argumento:string){
         const params = new HttpParams().set('nombre',argumento); 
@@ -51,8 +61,25 @@ export class PersonasService {
             this._historial.push(argumento);
             localStorage.setItem('historial',JSON.stringify(this._historial));
         }
-    }    
-
+    }
+    
+    buscarPorTipoPersona(argumento:string){
+        const params = new HttpParams().set('tipoPersona',argumento); 
+        console.log('funciona')
+ 
+        this.http.get<PersonaVMLite[]>(`${this.urlProd}TipoPersona?`, {params})
+            .subscribe(
+                resp => {
+                    this._personasLite = resp;
+                }
+            );
+        if (!this._historial.includes(argumento)){
+            this._historial.push(argumento);
+            localStorage.setItem('historial',JSON.stringify(this._historial));
+        }
+    } 
+    
+    
     buscarPersById(idProd:number): Observable<PersonaLite>{
         return this.http.get<PersonaLite>(`${this.urlProd}${idProd}`);
     }

@@ -62,8 +62,8 @@ export class ProductosService {
     }    
 
     buscarProdByConsola(argumento:string){
-        const params = new HttpParams().set('idConsola',argumento); 
- 
+        const params = new HttpParams().set('nombreConsola',argumento); 
+        console.log('funciona')
         this.http.get<JuegoViewModel[]>(`${this.urlProd}byConsola?`, {params})
             .subscribe(
                 resp => {

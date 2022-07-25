@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { PersonaCreate } from '../interfaces/personacreate.interface';
 import { PersonasService } from '../services/personas.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create-persona',
@@ -12,21 +13,22 @@ import { PersonasService } from '../services/personas.service';
 export class CreatePersonaComponent implements OnInit {
   miForm = this.formBuilder.group(
     {
-      id: [, [Validators.required, Validators.minLength(1)]],
       nombre: [, [Validators.required, Validators.minLength(3)]],
       apellido: [, [Validators.required, Validators.minLength(3)]],
       idTipoPersona: [, [Validators.required, Validators.minLength(1)]],
       idTipoDocumento: [, [Validators.required, Validators.minLength(1)]],
       documento: [, [Validators.required, Validators.minLength(7)]],
       idTipoTelefono: [, [Validators.required, Validators.minLength(1)]],
-      telefono: [, [Validators.required, Validators.minLength(6)]],
-      email: [, [Validators.required, Validators.minLength(5)]],
+      telefono: [, [Validators.required, Validators.minLength(10)]],
+      email: [, [Validators.required, Validators.email]],
       calle: [, [Validators.required, Validators.minLength(1)]],
       numeroCalle: [, [Validators.required, Validators.minLength(1)]],
       idCiudad: [, [Validators.required, Validators.minLength(1)]],
       codigoPostal: [, [Validators.required, Validators.minLength(4)]]
     }
   )
+
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
   constructor(private formBuilder: FormBuilder,
               private personasService: PersonasService) { }
@@ -36,6 +38,25 @@ export class CreatePersonaComponent implements OnInit {
     this.miForm.reset(
       {
         calle: "",
+      }
+    ); 
+  }
+
+  clear(): void{
+    this.miForm.reset(
+      {
+        nombre: null,
+        apellido: null,
+        idTipoPersona: null,
+        idTipoDocumento: null,
+        documento: null,
+        idTipoTelefono: null,
+        telefono: null,
+        email: null,
+        calle: null,
+        numeroCalle: null,
+        idCiudad: null,
+        codigoPostal: null,
       }
     ); 
   }
@@ -55,8 +76,15 @@ export class CreatePersonaComponent implements OnInit {
 
     console.log('guardando persona');
 
+    Swal.fire({
+     position: 'top-end',
+     icon: 'success',
+     title: 'La Persona ha sido registrada con exito!',
+     showConfirmButton: false,
+     timer: 1500
+   })
+
     const newPersona: PersonaCreate = {
-      id: this.miForm.controls['id'].value,
       nombre: this.miForm.controls['nombre'].value,
       apellido: this.miForm.controls['apellido'].value,
       idTipoPersona: this.miForm.controls['idTipoPersona'].value,
@@ -77,6 +105,6 @@ export class CreatePersonaComponent implements OnInit {
       {
         calle: "",
       }      
-    );    
+    );  
   }
 }

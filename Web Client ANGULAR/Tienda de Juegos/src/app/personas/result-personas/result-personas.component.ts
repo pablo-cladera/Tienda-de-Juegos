@@ -9,9 +9,12 @@ import { PersonasService } from '../services/personas.service';
 })
 export class ResultPersonasComponent {
 
-  get resultados() {
-     return this.persService.todasPersonas;
-  }
+   get resultados() {
+      return this.persService.todasPersonas;
+   }
+//   get resultados() {
+//     return this.persService.buscarTodasPersonasLite;
+//  }
 
   constructor(private persService: PersonasService) { }
 

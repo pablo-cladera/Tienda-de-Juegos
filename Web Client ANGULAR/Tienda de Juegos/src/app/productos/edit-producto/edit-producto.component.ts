@@ -6,8 +6,7 @@ import { ProductosService } from '../services/productos.service';
 @Component({
   selector: 'app-edit-producto',
   templateUrl: './edit-producto.component.html',
-  styles: [
-  ]
+  styleUrls: ['./edit-producto.component.scss']
 })
 export class EditProductoComponent implements OnInit {
   miForm = this.formBuilder.group(
@@ -21,8 +20,8 @@ export class EditProductoComponent implements OnInit {
       añoLanzamiento: [, [Validators.required, Validators.min(1)]],
       precio: [, [Validators.required, Validators.min(1)]],
       stock: [, [Validators.required, Validators.min(0)]],
-      stockmin: [, [Validators.required, Validators.min(0)]],
-      stockmax: [, [Validators.required, Validators.min(0)]]
+      stockMin: [, [Validators.required, Validators.min(0)]],
+      stockMax: [, [Validators.required, Validators.min(0)]]
     }
   )
 
@@ -62,15 +61,15 @@ export class EditProductoComponent implements OnInit {
       añoLanzamiento: this.miForm.controls['añoLanzamiento'].value,
       precio: this.miForm.controls['precio'].value,
       stock: this.miForm.controls['stock'].value,
-      stockMin: this.miForm.controls['stockmin'].value,
-      stockMax: this.miForm.controls['stockmax'].value,
+      stockMin: this.miForm.controls['stockMin'].value,
+      stockMax: this.miForm.controls['stockMax'].value,
     }
 
     this.productoService.upload(newJuego);
 
     this.miForm.reset(
       {
-        stock : 5
+        stock : ""
       }      
     );    
   }

@@ -1,6 +1,6 @@
 export interface PersonaLite 
 {
-    // id:             number;
+    //id:             number;
     nombre?:        string;
     apellido?:      string;
     idTipoPersona:  number;

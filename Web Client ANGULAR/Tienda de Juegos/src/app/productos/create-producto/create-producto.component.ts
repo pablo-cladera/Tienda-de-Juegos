@@ -54,7 +54,7 @@ export class CreateProductoComponent implements OnInit {
      Swal.fire({
       position: 'top-end',
       icon: 'success',
-      title: 'Su juego ha sigo guardado correctamente',
+      title: 'El juego ha sido guardado correctamente',
       showConfirmButton: false,
       timer: 1500
     })
@@ -78,7 +78,7 @@ export class CreateProductoComponent implements OnInit {
 
      this.miForm.reset(
        {
-         stock : 5
+         stock : ""
        }      
      );    
   }

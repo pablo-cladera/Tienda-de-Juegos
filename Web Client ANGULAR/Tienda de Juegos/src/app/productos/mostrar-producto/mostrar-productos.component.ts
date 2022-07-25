@@ -22,7 +22,7 @@ export class MostrarProductosComponent  {
  
   buscarByConsola(idConsola: string)
    {
-      console.log(`Nro de idConsola: ${idConsola}`);
+      console.log(`Nombre de idConsola: ${idConsola}`);
       this.prodsService.buscarProdByConsola(idConsola);
       //.subscribe();
    }

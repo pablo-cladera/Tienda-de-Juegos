@@ -6,27 +6,29 @@ import { ResultPersonasComponent } from './result-personas/result-personas.compo
 import { SearchPersonasComponent } from './search-personas/search-personas.component';
 import { MainPersonasComponent } from './main-personas/main-personas.component';
 import { CreatePersonaComponent } from './create-persona/create-persona.component';
-import { ViewPersonaComponent } from './view-persona/view-persona.component';
 import { PersonasService } from './services/personas.service';
 import { AppRoutingModule } from '../app-routing.module';
+import { MaterialModule } from '../material.module';
+import { ViewPersonaComponent } from './view-persona/view-persona.component';
 
 @NgModule({
   declarations: [
     ResultPersonasComponent, 
     SearchPersonasComponent, 
     MainPersonasComponent, 
-    CreatePersonaComponent, 
-    ViewPersonaComponent],
+    CreatePersonaComponent,
+    ViewPersonaComponent
+  ],
   imports: [
     CommonModule,
     RouterModule,
-    AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule
   ],
   exports: [
-    MainPersonasComponent,
-    CreatePersonaComponent, 
-    ViewPersonaComponent
+     MainPersonasComponent,
+     CreatePersonaComponent, 
+     ViewPersonaComponent
   ],
   providers: [
     PersonasService

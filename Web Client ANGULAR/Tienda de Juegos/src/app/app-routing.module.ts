@@ -35,7 +35,7 @@ const routes: Routes = [
   },
   {
     //                  /:value
-    path: 'mostrar-prod',
+    path: 'mostrar-prod/:value',
     component: MostrarProductosComponent
   },
 
